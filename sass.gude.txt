@@ -1,0 +1,46 @@
+=== global scope css ===
+create -> .CLASS
+usage -> className="CLASS"
+
+
+
+=== component module css ===
+FILE.js + FILE.module.scss
+import styles from "../../FILE.module.scss"
+usage -> {styles.CLASS}
+
+~ mixing comp.styles with global.styles ~
+{`${styles.CLASSCOMPONENT1} ${styles.CLASSCOMPONENT2} GLOBALCLASS`}
+
+
+
+=== mixin variable css ===
+ex setting color variable -> $color-red-500
+--------------usage -> @use "../../mixin.scss" as mixin
+
+in file sass mixin :
+.CLASS {
+    background-color : mixin.$color-red-500;
+}
+
+media query mixin :
+@mixin mobile {
+    @media only screen and (min-width: 400px) {
+        @content;
+    }
+}
+
+@mixin tablet {
+    @media only screen and (min-width: 700px) {
+        @content;
+    }
+}
+
+usage media query:
+.CLASS {
+    color:red;
+    @include mixin.tablet {
+        color:gren;
+        background-color: mixin.$color-red;
+    }
+}

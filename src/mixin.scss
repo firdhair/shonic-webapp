@@ -1,0 +1,60 @@
+//https://material.io/design/color/the-color-system.html#tools-for-picking-colors
+
+//Blue Primary : 700
+$blue-900: #3f44c7;
+$blue-800: #3f67e7;
+$blue-700: #3e7afa;
+$blue-600: #3c8dff;
+$blue-500: #369cff;
+$blue-400: #49acff;
+$blue-300: #68bcff;
+$blue-200: #95cfff;
+$blue-100: #bfe1ff;
+$blue-50: #e4f3ff;
+
+//Red Primary : 700
+$red-900: #ae2d20;
+$red-800: #be352a;
+$red-700: #cb3b31;
+$red-600: #dd4537;
+$red-500: #eb4e38;
+$red-400: #e85b51;
+$red-300: #df7774;
+$red-200: #ea9c9a;
+$red-100: #fcced2;
+$red-50: #feebee;
+
+//Black/Neutral : 900
+$neutral-900: #1c1c1e;
+$neutral-800: #3c3c3f;
+$neutral-700: #5b5b5d;
+$neutral-600: #6f6f71;
+$neutral-500: #97979a;
+$neutral-400: #b7b7b9;
+$neutral-300: #dadadd;
+$neutral-200: #eaeaed;
+$neutral-100: #f2f2f5;
+$neutral-50: #f9f9fc;
+$neutral-0: #ffffff;
+
+//=== MEDIA QUERY ===//
+// Mobile Media Query : 360 x 800
+@mixin mobile {
+  @media (min-width: 360px) {
+    @content;
+  }
+}
+
+// Tablet Media Query : 768 x 1024
+@mixin tablet {
+  @media (min-width: 768px) {
+    @content;
+  }
+}
+
+// Desktop Media Query : 360 x 800
+@mixin desktop {
+  @media (min-width: 1440px) {
+    @content;
+  }
+}

@@ -1,0 +1,121 @@
+@use '../../mixin.scss' as mixin;
+.pic {
+  width: 100%;
+  height: 100%;
+}
+
+.h3 {
+  font-size: 32px;
+  font-weight: 700;
+  text-transform: capitalize;
+  color: mixin.$neutral-900;
+  margin-top: 24px;
+}
+
+.form {
+  margin-top: 24px;
+  .div {
+    margin-block: 12px;
+    .label {
+      display: block;
+      font-size: 14px;
+      font-weight: 500;
+      text-transform: capitalize;
+      color: mixin.$neutral-900;
+    }
+    .input {
+      display: block;
+      font-size: 14px;
+      border-radius: 6px;
+      border: 1px solid mixin.$neutral-400;
+      margin-top: 4px;
+      padding: 8px;
+      width: 100%;
+      &::placeholder {
+        color: mixin.$neutral-600;
+        font-size: 14px;
+      }
+      &:focus {
+        outline: none;
+        border: 1px solid mixin.$blue-700;
+      }
+    }
+  }
+  .button {
+    display: block;
+    margin-top: 24px;
+    width: 100%;
+    padding-block: 8px;
+    border-radius: 6px;
+    background-color: mixin.$blue-700;
+    color: mixin.$neutral-0;
+    font-size: 16px;
+    font-weight: 600;
+    text-transform: capitalize;
+    border: none;
+    &:hover {
+      background-color: mixin.$blue-800;
+      transition: background-color 0.2s ease-in-out;
+    }
+  }
+}
+
+.accent {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-block: 8px;
+  .strip {
+    height: 1px;
+    width: 100%;
+    background-color: mixin.$neutral-600;
+  }
+  .p {
+    font-size: 14px;
+    color: mixin.$neutral-700;
+  }
+}
+
+.buttongoogle {
+  display: block;
+  width: 100%;
+  padding-block: 8px;
+  border: 1px solid mixin.$neutral-400;
+  border-radius: 6px;
+  background-color: mixin.$neutral-0;
+  font-size: 16px;
+  font-weight: 600;
+  text-transform: capitalize;
+  &:hover {
+    background-color: mixin.$neutral-100;
+    transition: background-color 0.2s ease-in-out;
+  }
+  .link {
+    text-decoration: none;
+    color: mixin.$neutral-900;
+    font-size: 16px;
+    font-weight: 600;
+    .flex {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+    }
+  }
+}
+
+.daftar {
+  text-align: center;
+  text-transform: lowercase;
+  color: mixin.$neutral-700;
+  font-size: 14px;
+  font-weight: 500;
+  // margin: 24px 0 64px 0;
+  margin-top: 24px;
+  .link {
+    text-decoration: none;
+    color: mixin.$blue-700;
+    text-transform: capitalize;
+  }
+}

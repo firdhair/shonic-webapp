@@ -1,0 +1,29 @@
+@use './mixin.scss' as mixin;
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap');
+*,
+*:before,
+*:after,
+body {
+  box-sizing: border-box;
+  margin: 0px;
+  padding: 0px;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.container {
+  padding: 20px;
+  max-width: 786px;
+  padding-inline: 16px;
+  margin-inline: auto;
+  /*   background-color: aqua; */
+  @include mixin.tablet {
+    max-width: 1440px;
+    padding-inline: 50px;
+    background-color: mixin.$blue-100;
+  }
+  @include mixin.desktop {
+    max-width: 1440px;
+    padding-inline: 70px;
+    background-color: greenyellow;
+  }
+}

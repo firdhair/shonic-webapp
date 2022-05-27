@@ -1,0 +1,30 @@
+@use '../mixin.scss' as mixin;
+
+.header {
+  border-bottom: 1px solid black;
+  .nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: mixin.$neutral-0;
+  }
+  .icon {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    .logo {
+      width: 20px;
+      height: 20px;
+    }
+    .text {
+      width: 65px;
+      height: 16px;
+    }
+  }
+  .desc {
+    color: mixin.$blue-700;
+    font-size: 12px;
+    font-weight: 500;
+  }
+}
