@@ -1,12 +1,14 @@
-@use '../mixin.scss' as mixin;
+@use '../../mixin.scss' as mixin;
 
 .header {
-  border-bottom: 1px solid black;
+  position: relative;
+  width: 100%;
+  box-shadow: mixin.$shadow-elevation-3;
   .nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: mixin.$neutral-0;
+    background-color: mixin.$neutral-100;
   }
   .icon {
     display: flex;
@@ -23,8 +25,6 @@
     }
   }
   .desc {
-    color: mixin.$blue-700;
-    font-size: 12px;
-    font-weight: 500;
+    color: mixin.$primary-text;
   }
 }

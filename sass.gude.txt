@@ -1,4 +1,4 @@
-=== global scope css ===
+=== global scope css ===//
 create -> .CLASS
 usage -> className="CLASS"
 
