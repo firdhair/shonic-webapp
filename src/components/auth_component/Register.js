@@ -47,8 +47,8 @@ const Register = () => {
           <p className={`${styles.daftar} medium-14`}>
             Sudah punya akun?
             <span> </span>
-            <Link to="/" className={styles.link}>
-              daftar
+            <Link to="/login" className={styles.link}>
+              Login
             </Link>
           </p>
         </div>

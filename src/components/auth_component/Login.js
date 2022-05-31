@@ -46,7 +46,7 @@ const Login = () => {
           <p className={`${styles.daftar} medium-14`}>
             belum punya akun?
             <span> </span>
-            <Link to="/" className={styles.link}>
+            <Link to="/register" className={styles.link}>
               daftar
             </Link>
           </p>
