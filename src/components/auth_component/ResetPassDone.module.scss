@@ -18,10 +18,18 @@
   .flexcontainer {
     padding-top: 56px;
     width: 100%;
+<<<<<<< HEAD
+=======
+
+>>>>>>> d3c54db2459db64d4a8e9699dca0e032be3741cf
     height: auto;
     display: flex;
     flex-direction: column;
     max-width: 456px;
+<<<<<<< HEAD
+=======
+    /*    background-color: aqua; */
+>>>>>>> d3c54db2459db64d4a8e9699dca0e032be3741cf
     @include mixin.tablet {
       max-width: 500px;
       padding-top: 64px;

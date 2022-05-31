@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 @use '../../mixin.scss' as mixin;
+=======
+@use "../../mixin.scss" as mixin;
+>>>>>>> d3c54db2459db64d4a8e9699dca0e032be3741cf
 
 .outer {
   width: 100%;
@@ -110,6 +114,10 @@
     color: mixin.$neutral-100;
     text-transform: capitalize;
     border: none;
+<<<<<<< HEAD
+=======
+    cursor: pointer;
+>>>>>>> d3c54db2459db64d4a8e9699dca0e032be3741cf
     &:hover {
       background-color: mixin.$primary-hover;
       transition: background-color 0.2s ease-in-out;

@@ -5,8 +5,27 @@ import { GoogleIcon } from '../../images/icons/ShonicIcon';
 import styles from './Login.module.scss';
 //react router
 import { Link } from 'react-router-dom';
+<<<<<<< HEAD
 
 const Login = () => {
+=======
+// necessary dependencies
+import { useDispatch, useSelector } from "react-redux"
+import { fetchPostStart, loginActionAsync } from '../action'
+import { useState } from 'react'
+
+const Login = () => {
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const dispatch = useDispatch()
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    console.log("ini handleSubmit")
+    dispatch(loginActionAsync(email, password))
+  }
+
+>>>>>>> d3c54db2459db64d4a8e9699dca0e032be3741cf
   return (
     <div className={styles.outer}>
       <div className={`${styles.flexcontainer} container`}>
@@ -19,6 +38,7 @@ const Login = () => {
           <form className={styles.form}>
             <div className={styles.div}>
               <label className={`${styles.label} medium-14`}>email</label>
+<<<<<<< HEAD
               <input className={`${styles.input} regular-14`} type="email" placeholder="masukkan email" name="email" />
             </div>
             <div className={styles.div}>
@@ -26,6 +46,16 @@ const Login = () => {
               <input className={`${styles.input} regular-14`} type="password" placeholder="masukkan password" name="password" />
             </div>
             <button className={`${styles.button} semibold-16`}>Masuk</button>
+=======
+              <input className={`${styles.input} regular-14`} type="email" placeholder="masukkan email" name="email" value={email} onChange={(e) => setEmail(e.target.value)}/>
+            </div>
+            <div className={styles.div}>
+              <label className={`${styles.label} medium-14`}>password</label>
+              <input className={`${styles.input} regular-14`} type="password" placeholder="masukkan password" name="password" value={password} onChange={(e) => setPassword(e.target.value)}/>
+            </div>
+            <p className={`${styles.forgotPassword} medium-12`}><Link to="/resetpass">Lupa Password?</Link></p>
+            <button className={`${styles.button} semibold-16`} onClick={handleSubmit}>Masuk</button>
+>>>>>>> d3c54db2459db64d4a8e9699dca0e032be3741cf
           </form>
           {/* Aatau */}
           <div className={`${styles.accent} semibold-16`}>
@@ -46,7 +76,11 @@ const Login = () => {
           <p className={`${styles.daftar} medium-14`}>
             belum punya akun?
             <span> </span>
+<<<<<<< HEAD
             <Link to="/" className={styles.link}>
+=======
+            <Link to="/register" className={styles.link}>
+>>>>>>> d3c54db2459db64d4a8e9699dca0e032be3741cf
               daftar
             </Link>
           </p>

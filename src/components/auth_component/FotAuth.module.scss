@@ -1,7 +1,14 @@
+<<<<<<< HEAD
 @use '../../mixin.scss' as mixin;
 
 .footer {
   position: absolute;
+=======
+@use "../../mixin.scss" as mixin;
+
+.footer {
+  //position: absolute;
+>>>>>>> d3c54db2459db64d4a8e9699dca0e032be3741cf
   bottom: 0;
   width: 100%;
   z-index: 10;
@@ -10,7 +17,11 @@
   text-align: center;
   padding-block: 12px;
   @include mixin.tablet {
+<<<<<<< HEAD
     position: relative;
+=======
+    //position: relative;
+>>>>>>> d3c54db2459db64d4a8e9699dca0e032be3741cf
   }
   @include mixin.desktop {
   }

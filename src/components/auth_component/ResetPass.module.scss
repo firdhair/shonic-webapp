@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 @use '../../mixin.scss' as mixin;
+=======
+@use "../../mixin.scss" as mixin;
+>>>>>>> d3c54db2459db64d4a8e9699dca0e032be3741cf
 
 .outer {
   width: 100%;
@@ -18,7 +22,10 @@
   .flexcontainer {
     padding-top: 56px;
     width: 100%;
+<<<<<<< HEAD
 
+=======
+>>>>>>> d3c54db2459db64d4a8e9699dca0e032be3741cf
     height: auto;
     display: flex;
     flex-direction: column;
@@ -41,7 +48,13 @@
 
     .flexbottom {
       flex-basis: 100%;
+<<<<<<< HEAD
       margin-bottom: 24px;
+=======
+      min-width: 30vw;
+      margin-bottom: 24px;
+
+>>>>>>> d3c54db2459db64d4a8e9699dca0e032be3741cf
       @include mixin.tablet {
         border-radius: 8px;
         padding: 42px;
@@ -53,6 +66,14 @@
         padding: 42px;
         box-shadow: mixin.$shadow-elevation-6;
       }
+<<<<<<< HEAD
+=======
+      span {
+        a {
+          color: mixin.$primary-button;
+        }
+      }
+>>>>>>> d3c54db2459db64d4a8e9699dca0e032be3741cf
       .head {
         display: flex;
         align-items: center;
@@ -85,7 +106,11 @@
 .syarat {
   color: mixin.$neutral-900;
   text-align: center;
+<<<<<<< HEAD
   margin-block: 42px;
+=======
+  margin-block: 3rem;
+>>>>>>> d3c54db2459db64d4a8e9699dca0e032be3741cf
   & > * {
     color: mixin.$primary-text;
   }
@@ -120,6 +145,10 @@
     display: block;
     margin-top: 24px;
     width: 100%;
+<<<<<<< HEAD
+=======
+    cursor: pointer;
+>>>>>>> d3c54db2459db64d4a8e9699dca0e032be3741cf
     padding-block: 8px;
     border-radius: 6px;
     background-color: mixin.$primary-button;
