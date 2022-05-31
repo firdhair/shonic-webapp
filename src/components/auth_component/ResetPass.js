@@ -2,6 +2,8 @@
 import styles from './ResetPass.module.scss';
 //react router
 import { LeftButton } from '../../images/icons/ShonicIcon';
+// router
+import { Link } from 'react-router-dom';
 
 const ResetPass = () => {
   return (
@@ -25,7 +27,8 @@ const ResetPass = () => {
           </form>
 
           {/* DAFTAR */}
-          <p className={`${styles.daftar} medium-14`}>Kembali ke halaman Login atau DaftarTidak menerima kode verifikasi?</p>
+          <p className={`${styles.daftar} medium-14`}>Kembali ke halaman  
+          <Link to="/login"> Login</Link> atau <Link to="/register">Daftar</Link></p>
         </div>
       </div>
     </div>

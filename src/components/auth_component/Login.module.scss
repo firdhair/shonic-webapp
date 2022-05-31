@@ -1,4 +1,4 @@
-@use '../../mixin.scss' as mixin;
+@use "../../mixin.scss" as mixin;
 
 .outer {
   width: 100%;
@@ -98,6 +98,7 @@
     display: block;
     margin-top: 24px;
     width: 100%;
+    cursor: pointer;
     padding-block: 8px;
     border-radius: 6px;
     background-color: mixin.$primary-button;

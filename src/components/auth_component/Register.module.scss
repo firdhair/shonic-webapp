@@ -1,4 +1,4 @@
-@use '../../mixin.scss' as mixin;
+@use "../../mixin.scss" as mixin;
 
 .outer {
   width: 100%;
@@ -110,6 +110,7 @@
     color: mixin.$neutral-100;
     text-transform: capitalize;
     border: none;
+    cursor: pointer;
     &:hover {
       background-color: mixin.$primary-hover;
       transition: background-color 0.2s ease-in-out;

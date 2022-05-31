@@ -6,10 +6,12 @@ import Home from './pages/home_page/Home';
 import FotAuth from '../src/components/auth_component/FotAuth';
 import NavAuth from '../src/components/auth_component/NavAuth';
 import ResetPassDone from '../src/components/auth_component/ResetPassDone';
-/* import ResetPassNext from '../../components/auth_component/ResetPassNext'; */
-/* import ResetPass from '../../components/auth_component/ResetPass'; */
+import ResetPassNext from '../src/components/auth_component/ResetPassNext'; 
+import ResetPass from '../src/components/auth_component/ResetPass'; 
+
 //css
 import styles from '../src/pages/auth_page/Auth.module.scss';
+
 //react router
 import Login from '../src/components/auth_component/Login'; 
 import Register from '../src/components/auth_component/Register'; 
@@ -23,6 +25,7 @@ function App() {
         <Route index element={<Home/>}></Route>
         <Route path="login" element={<Login/>}></Route>
         <Route path="register" element={<Register/>}></Route>
+        <Route path="resetpass" element={<ResetPass/>}></Route>
       </Route>
     </Routes>
     <FotAuth />
