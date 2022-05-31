@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 @use '../../mixin.scss' as mixin;
-=======
-@use "../../mixin.scss" as mixin;
->>>>>>> d3c54db2459db64d4a8e9699dca0e032be3741cf
 
 .outer {
   width: 100%;
@@ -124,10 +120,7 @@
     width: 100%;
     padding-block: 8px;
     border-radius: 6px;
-<<<<<<< HEAD
-=======
     cursor: pointer;
->>>>>>> d3c54db2459db64d4a8e9699dca0e032be3741cf
     background-color: mixin.$primary-button;
     color: mixin.$neutral-100;
     text-transform: capitalize;

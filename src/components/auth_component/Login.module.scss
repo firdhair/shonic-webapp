@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 @use '../../mixin.scss' as mixin;
-=======
-@use "../../mixin.scss" as mixin;
->>>>>>> d3c54db2459db64d4a8e9699dca0e032be3741cf
 
 .outer {
   width: 100%;
@@ -102,10 +98,7 @@
     display: block;
     margin-top: 24px;
     width: 100%;
-<<<<<<< HEAD
-=======
     cursor: pointer;
->>>>>>> d3c54db2459db64d4a8e9699dca0e032be3741cf
     padding-block: 8px;
     border-radius: 6px;
     background-color: mixin.$primary-button;
@@ -117,15 +110,12 @@
       transition: background-color 0.2s ease-in-out;
     }
   }
-<<<<<<< HEAD
-=======
   .forgotPassword {
     display: flex;
     justify-content: flex-end;
     color: mixin.$primary-text;
     cursor: pointer;
   }
->>>>>>> d3c54db2459db64d4a8e9699dca0e032be3741cf
 }
 
 .accent {
