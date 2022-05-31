@@ -1,0 +1,200 @@
+@use '../../mixin.scss' as mixin;
+
+.relative {
+  height: 100vh;
+  position: relative;
+  /*  display: grid;
+  grid-template-rows: auto 1fr auto; */
+}
+
+.outer {
+  /*  border: 3px solid red; */
+  /*   background-color: aquamarine; */
+  width: 100%;
+  height: 100%;
+  /*   margin-top: 56px; */
+  /*  background-color: aqua; */
+  @include mixin.desktop {
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    /*   background-color: red;
+    @include mixin.desktop {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  } */
+  }
+
+  .flexcontainer {
+    padding-top: 56px;
+    /*     background-color: red; */
+    /*   background-color: brown;
+    border: 3px dashed yellow; */
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    /*    background-color: aqua; */
+    @include mixin.tablet {
+      display: inline-block;
+      padding-inline: 168px;
+      padding-top: 64px;
+    }
+
+    @include mixin.desktop {
+      /* padding-inline: 162px; */
+      /*  background-color: red; */
+      padding-top: 76px;
+      width: 100%;
+      height: 100%;
+      display: inline-flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      gap: 48px;
+    }
+
+    .flexup {
+      flex-basis: 100%;
+      margin-top: 16px;
+      /*  background-color: red; */
+    }
+    .flexbottom {
+      /*  background-color: blue; */
+      /*  @include mixin.mobile {
+          visibility: hidden;
+        } */
+      /* background-color: mediumslateblue;
+      padding: 12px; */
+      /*   border: 3px dashed green; */
+      flex-basis: 100%;
+      margin-bottom: 24px;
+      @include mixin.tablet {
+        border-radius: 8px;
+        padding: 42px;
+        margin-top: 32px;
+        box-shadow: mixin.$shadow-elevation-3;
+      }
+      @include mixin.desktop {
+        width: auto;
+        padding: 42px;
+        box-shadow: mixin.$shadow-elevation-6;
+      }
+    }
+  }
+}
+
+.pic {
+  width: 100%;
+  height: 100%;
+  /*  background-color: bisque; */
+}
+
+.h3 {
+  /*   background-color: aqua; */
+  text-transform: capitalize;
+  color: mixin.$neutral-900;
+  margin-top: 24px;
+  @include mixin.desktop {
+    margin-top: 0;
+  }
+}
+
+.form {
+  margin-top: 24px;
+  /* background-color: yellow; */
+  .div {
+    margin-block: 12px;
+    .label {
+      display: block;
+      text-transform: capitalize;
+      color: mixin.$neutral-900;
+    }
+    .input {
+      display: block;
+      border-radius: 6px;
+      border: 1px solid mixin.$neutral-400;
+      margin-top: 4px;
+      padding: 8px;
+      width: 100%;
+      &::placeholder {
+        color: mixin.$neutral-600;
+      }
+      &:focus {
+        outline: none;
+        border: 1px solid mixin.$primary-button;
+      }
+    }
+  }
+  .button {
+    display: block;
+    margin-top: 24px;
+    width: 100%;
+    padding-block: 8px;
+    border-radius: 6px;
+    background-color: mixin.$primary-button;
+    color: mixin.$neutral-100;
+    text-transform: capitalize;
+    border: none;
+    &:hover {
+      background-color: mixin.$primary-hover;
+      transition: background-color 0.2s ease-in-out;
+    }
+  }
+}
+
+.accent {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-block: 8px;
+  .strip {
+    height: 1px;
+    width: 100%;
+    background-color: mixin.$neutral-600;
+  }
+  .p {
+    color: mixin.$neutral-600;
+  }
+}
+
+.buttongoogle {
+  display: block;
+  width: 100%;
+  padding-block: 8px;
+  border: 1px solid mixin.$neutral-600;
+  border-radius: 6px;
+  background-color: mixin.$neutral-100;
+  text-transform: capitalize;
+  &:hover {
+    background-color: mixin.$neutral-200;
+    transition: background-color 0.2s ease-in-out;
+  }
+  .link {
+    text-decoration: none;
+    color: mixin.$neutral-900;
+    .flex {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+    }
+  }
+}
+
+.daftar {
+  text-align: center;
+  text-transform: lowercase;
+  color: mixin.$neutral-900;
+  // margin: 24px 0 64px 0;
+  margin-top: 24px;
+  .link {
+    text-decoration: none;
+    color: mixin.$primary-button;
+    text-transform: capitalize;
+  }
+}

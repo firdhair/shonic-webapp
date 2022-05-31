@@ -1,0 +1,17 @@
+@use '../../mixin.scss' as mixin;
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  z-index: 10;
+  background-color: mixin.$neutral-900;
+  color: mixin.$neutral-100;
+  text-align: center;
+  padding-block: 12px;
+  @include mixin.tablet {
+    position: relative;
+  }
+  @include mixin.desktop {
+  }
+}

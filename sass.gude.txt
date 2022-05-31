@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 === global scope css ==--------=
+=======
+=== global scope css ===//
+>>>>>>> c618342b90cfbed5836a745841428c6bf2549063
 create -> .CLASS
 usage -> className="CLASS"
 

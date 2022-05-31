@@ -1,0 +1,112 @@
+@use '../../mixin.scss' as mixin;
+
+.outer {
+  width: 100%;
+  height: 100%;
+  @include mixin.tablet {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  @include mixin.desktop {
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .flexcontainer {
+    padding-top: 56px;
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    max-width: 456px;
+    @include mixin.tablet {
+      max-width: 500px;
+      padding-top: 64px;
+    }
+
+    @include mixin.desktop {
+      padding-top: 76px;
+      width: 100%;
+      height: 100%;
+      display: inline-flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      gap: 48px;
+    }
+
+    .flexbottom {
+      flex-basis: 100%;
+      margin-bottom: 24px;
+      @include mixin.tablet {
+        border-radius: 8px;
+        padding: 42px;
+        margin-top: 32px;
+        box-shadow: mixin.$shadow-elevation-3;
+      }
+      @include mixin.desktop {
+        width: auto;
+        padding: 42px;
+        box-shadow: mixin.$shadow-elevation-6;
+      }
+
+      .h3 {
+        text-transform: capitalize;
+        text-align: center;
+        color: mixin.$neutral-900;
+        @include mixin.desktop {
+          margin-top: 0;
+        }
+      }
+    }
+  }
+}
+
+.pic {
+  width: 100%;
+  height: 100%;
+}
+
+.syarat {
+  color: mixin.$neutral-900;
+  text-align: center;
+  margin-block: 42px;
+  & > * {
+    color: mixin.$primary-text;
+  }
+}
+
+.button {
+  display: block;
+  margin-top: 24px;
+  width: 100%;
+  padding-block: 8px;
+  border-radius: 6px;
+  background-color: mixin.$primary-button;
+  color: mixin.$neutral-100;
+  text-transform: capitalize;
+  border: none;
+  &:hover {
+    background-color: mixin.$primary-hover;
+    transition: background-color 0.2s ease-in-out;
+  }
+}
+
+.back {
+  display: block;
+  margin-top: 16px;
+  width: 100%;
+  padding-block: 8px;
+  border-radius: 6px;
+  background-color: mixin.$neutral-100;
+  border: 1px solid mixin.$neutral-400;
+  color: mixin.$neutral-900;
+  text-transform: capitalize;
+  &:hover {
+    background-color: mixin.$neutral-200;
+    transition: background-color 0.2s ease-in-out;
+  }
+}
