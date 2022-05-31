@@ -5,8 +5,22 @@ import { GoogleIcon } from '../../images/icons/ShonicIcon';
 import styles from './Login.module.scss';
 //react router
 import { Link } from 'react-router-dom';
+// necessary dependencies
+import { useDispatch, useSelector } from "react-redux"
+import { fetchPostStart, loginActionAsync } from '../action'
+import { useState } from 'react'
 
 const Login = () => {
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const dispatch = useDispatch()
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    console.log("ini handleSubmit")
+    dispatch(loginActionAsync(email, password))
+  }
+
   return (
     <div className={styles.outer}>
       <div className={`${styles.flexcontainer} container`}>
@@ -19,13 +33,13 @@ const Login = () => {
           <form className={styles.form}>
             <div className={styles.div}>
               <label className={`${styles.label} medium-14`}>email</label>
-              <input className={`${styles.input} regular-14`} type="email" placeholder="masukkan email" name="email" />
+              <input className={`${styles.input} regular-14`} type="email" placeholder="masukkan email" name="email" value={email} onChange={(e) => setEmail(e.target.value)}/>
             </div>
             <div className={styles.div}>
               <label className={`${styles.label} medium-14`}>password</label>
-              <input className={`${styles.input} regular-14`} type="password" placeholder="masukkan password" name="password" />
+              <input className={`${styles.input} regular-14`} type="password" placeholder="masukkan password" name="password" value={password} onChange={(e) => setPassword(e.target.value)}/>
             </div>
-            <button className={`${styles.button} semibold-16`}>Masuk</button>
+            <button className={`${styles.button} semibold-16`} onClick={handleSubmit}>Masuk</button>
           </form>
           {/* Aatau */}
           <div className={`${styles.accent} semibold-16`}>

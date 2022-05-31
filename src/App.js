@@ -9,9 +9,6 @@ import ResetPassDone from '../src/components/auth_component/ResetPassDone';
 import ResetPassNext from '../src/components/auth_component/ResetPassNext'; 
 import ResetPass from '../src/components/auth_component/ResetPass'; 
 
-//css
-import styles from '../src/pages/auth_page/Auth.module.scss';
-
 //react router
 import Login from '../src/components/auth_component/Login'; 
 import Register from '../src/components/auth_component/Register'; 
