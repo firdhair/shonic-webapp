@@ -12,7 +12,7 @@ const ResetPass = () => {
         {/* LOGIN FORM */}
         <div className={styles.flexbottom}>
           <div className={styles.head}>
-            <LeftButton className={styles.left} />
+            <Link to="/login"><LeftButton className={styles.left} /></Link>
             <h3 className={`${styles.h3} bold-32`}>Reset password</h3>
           </div>
           <p className={`${styles.syarat} medium-12`}>Masukkan email yang terdaftar pada akun Shonic untuk mengatur ulang password Anda </p>
@@ -28,7 +28,7 @@ const ResetPass = () => {
 
           {/* DAFTAR */}
           <p className={`${styles.daftar} medium-14`}>Kembali ke halaman  
-          <Link to="/login"> Login</Link> atau <Link to="/register">Daftar</Link></p>
+          <span><Link to="/login"> Login</Link></span> atau <span><Link to="/register">Daftar</Link></span></p>
         </div>
       </div>
     </div>

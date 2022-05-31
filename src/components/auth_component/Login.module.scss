@@ -110,6 +110,12 @@
       transition: background-color 0.2s ease-in-out;
     }
   }
+  .forgotPassword {
+    display: flex;
+    justify-content: flex-end;
+    color: mixin.$primary-text;
+    cursor: pointer;
+  }
 }
 
 .accent {

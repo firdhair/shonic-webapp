@@ -39,6 +39,7 @@ const Login = () => {
               <label className={`${styles.label} medium-14`}>password</label>
               <input className={`${styles.input} regular-14`} type="password" placeholder="masukkan password" name="password" value={password} onChange={(e) => setPassword(e.target.value)}/>
             </div>
+            <p className={`${styles.forgotPassword} medium-12`}><Link to="/resetpass">Lupa Password?</Link></p>
             <button className={`${styles.button} semibold-16`} onClick={handleSubmit}>Masuk</button>
           </form>
           {/* Aatau */}

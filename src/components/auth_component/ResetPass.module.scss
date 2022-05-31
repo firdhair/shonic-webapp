@@ -54,6 +54,11 @@
         padding: 42px;
         box-shadow: mixin.$shadow-elevation-6;
       }
+      span {
+        a {
+          color: mixin.$primary-button;
+        }
+      }
       .head {
         display: flex;
         align-items: center;
@@ -86,7 +91,7 @@
 .syarat {
   color: mixin.$neutral-900;
   text-align: center;
-  margin-block: 42px;
+  margin-block: 3rem;
   & > * {
     color: mixin.$primary-text;
   }

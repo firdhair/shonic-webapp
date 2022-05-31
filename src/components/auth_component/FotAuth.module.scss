@@ -1,7 +1,7 @@
-@use '../../mixin.scss' as mixin;
+@use "../../mixin.scss" as mixin;
 
 .footer {
-  position: absolute;
+  //position: absolute;
   bottom: 0;
   width: 100%;
   z-index: 10;
@@ -10,7 +10,7 @@
   text-align: center;
   padding-block: 12px;
   @include mixin.tablet {
-    position: relative;
+    //position: relative;
   }
   @include mixin.desktop {
   }
