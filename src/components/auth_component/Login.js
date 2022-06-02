@@ -13,12 +13,40 @@ import { useState } from 'react';
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [errorEmail, setErrorEmail] = useState('');
+  const [errorPass, setErrorPass] = useState('');
   const dispatch = useDispatch();
 
-  const handleSubmit = (e) => {
+  const emailValidation = () => {
+    const regex = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+    if(!email ||  regex.test(email) === false){
+        setErrorEmail("Format email tidak valid, contoh: shonic@gmail.com")
+        console.log("error", errorEmail)
+        return false;
+    }
+    return true;
+  }
+
+  const passwordValidation = () => {
+    console.log("password length", password.length)
+    if(password.length < 6){
+      setErrorPass("Password min. 6 karakter, terdiri dari angka dan huruf")
+      return false;
+    }
+    return true;
+  }
+
+  const onSubmit = (e) => {
     e.preventDefault();
+    console.log("email: ",email,", password: ", password)
     console.log('ini handleSubmit');
-    dispatch(loginActionAsync(email, password));
+    if(passwordValidation() && emailValidation()){
+          console.log("errorEmail", errorEmail)
+          setEmail(email)
+          console.log("berhasil")
+          dispatch(loginActionAsync(email, password));
+       
+    }
   };
 
   return (
@@ -34,15 +62,17 @@ const Login = () => {
             <div className={styles.div}>
               <label className={`${styles.label} medium-14`}>email</label>
               <input className={`${styles.input} regular-14`} type="email" placeholder="masukkan email" name="email" value={email} onChange={(e) => setEmail(e.target.value)} />
+              <span className={`${styles.span} regular-12`}>{errorEmail}</span>
             </div>
             <div className={styles.div}>
               <label className={`${styles.label} medium-14`}>password</label>
               <input className={`${styles.input} regular-14`} type="password" placeholder="masukkan password" name="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+                <span className={`${styles.span} regular-12`}>{errorPass}</span>
             </div>
             <p className={`${styles.forgotPassword} medium-12`}>
               <Link to="/resetpass">Lupa Password?</Link>
             </p>
-            <button className={`${styles.button} semibold-16`} onClick={handleSubmit}>
+            <button className={`${styles.button} semibold-16`} onClick={onSubmit}>
               Masuk
             </button>
           </form>
