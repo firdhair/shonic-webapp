@@ -6,6 +6,7 @@ const fetchPostStart = {
 }
 
 const loginActionAsync = (email, password) => {
+  console.log("help this is login")
   return (dispatch, getState) => {
     // baseUrl/users/authenticate
     axios.post(`https://shonic-test.herokuapp.com/api/v1/auth/login`, {
@@ -42,11 +43,11 @@ const registAccount2 = (email, password) => {
   }
 }
 
-const registAccount = (username, password) => {
+const registAccount = (email, fullname, password) => {
   return (dispatch, getState, baseUrl) => {
     // baseUrl/users/authenticate
     axios.post(`https://shonic-test.herokuapp.com/api/v1/auth/register`, {
-      username,
+      email,
       password
     }).then((response) => {
       console.log("response data: ", response.data)

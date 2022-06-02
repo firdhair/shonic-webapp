@@ -12,6 +12,8 @@ import ResetPass from '../src/components/auth_component/ResetPass';
 //react router
 import Login from '../src/components/auth_component/Login';
 import Register from '../src/components/auth_component/Register';
+import Veriffikasi from '../src/components/auth_component/Verif';
+import LengkapiPendaftaran from '../src/components/auth_component/LoginNext';
 
 function App() {
   return (
@@ -23,6 +25,8 @@ function App() {
           <Route path="login" element={<Login />}></Route>
           <Route path="register" element={<Register />}></Route>
           <Route path="resetpass" element={<ResetPass />}></Route>
+          <Route path="verifikasi" element={<Veriffikasi />}></Route>
+          <Route path="lengkapipendaftaran" element={<LengkapiPendaftaran />}></Route>
         </Route>
       </Routes>
       <FotAuth />

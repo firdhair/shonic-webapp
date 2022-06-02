@@ -17,35 +17,51 @@ const Login = () => {
   const [errorPass, setErrorPass] = useState('');
   const dispatch = useDispatch();
 
-  const emailValidation = () => {
+  const validation = (e) => {
+    let isValid = true;
+    let emailInput = e.target.parentNode.childNodes[0].childNodes[1];
+    let passInput = e.target.parentNode.childNodes[1].childNodes[1];
     const regex = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
-    if(!email ||  regex.test(email) === false){
-        setErrorEmail("Format email tidak valid, contoh: shonic@gmail.com")
-        console.log("error", errorEmail)
-        return false;
-    }
-    return true;
-  }
+    const regularExpression = /^(?=.*[0-6])[a-zA-Z0-9!@#$%^&*]{6,16}$/;
+    
+        if(email && regex.test(email) === true){
+            setErrorEmail("")
+            emailInput.style.cssText = 'border:1px solid #e0e0e0';
+        } else if(!email ||  regex.test(email) === false){
+            setErrorEmail("Format email tidak valid, contoh: shonic@gmail.com")
+            emailInput.style.cssText = 'border:1px solid red';
+            isValid = false;
+        }
 
-  const passwordValidation = () => {
-    console.log("password length", password.length)
-    if(password.length < 6){
-      setErrorPass("Password min. 6 karakter, terdiri dari angka dan huruf")
-      return false;
-    }
-    return true;
+        if(password && regularExpression.test(password) === true){
+            setErrorPass("")
+            passInput.style.cssText = 'border:1px solid #e0e0e0';
+        } else if (!password || regularExpression.test(password) === false){
+          setErrorPass("Password min. 6 karakter, terdiri dari angka dan huruf") 
+          passInput.style.cssText = 'border:1px solid red';
+          isValid = false;
+        }
+
+        if(password && regularExpression.test(password) === true && email && regex.test(email) === true){
+          isValid = true;
+        }
+        
+      return isValid;
   }
 
   const onSubmit = (e) => {
     e.preventDefault();
     console.log("email: ",email,", password: ", password)
-    console.log('ini handleSubmit');
-    if(passwordValidation() && emailValidation()){
-          console.log("errorEmail", errorEmail)
-          setEmail(email)
-          console.log("berhasil")
-          dispatch(loginActionAsync(email, password));
-    }
+    console.log('ini handleSubmit'); 
+    let emailInput = e.target.parentNode.childNodes[0].childNodes[1];
+    let passInput = e.target.parentNode.childNodes[1].childNodes[1];
+
+    if(validation(e)){
+        dispatch(loginActionAsync(email, password));
+        console.log("yay lolos")
+        setErrorEmail("")
+        setErrorPass("")
+    } 
   };
 
   return (

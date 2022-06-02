@@ -1,4 +1,4 @@
-@use '../../mixin.scss' as mixin;
+@use "../../mixin.scss" as mixin;
 
 .outer {
   width: 100%;
@@ -77,12 +77,14 @@
       display: block;
       text-transform: capitalize;
       color: mixin.$neutral-900;
+      margin-top: 1rem;
     }
     .input {
       display: block;
       border-radius: 6px;
       border: 1px solid mixin.$neutral-400;
-      margin-top: 4px;
+      margin-top: 0.5rem;
+      margin-bottom: 0.5rem;
       padding: 8px;
       width: 100%;
       &::placeholder {
@@ -93,9 +95,13 @@
         border: 1px solid mixin.$primary-button;
       }
     }
+    span {
+      color: mixin.$secondary-danger;
+    }
   }
   .syarat {
     color: mixin.$neutral-900;
+    margin-bottom: 5rem;
     & > * {
       color: mixin.$primary-text;
     }

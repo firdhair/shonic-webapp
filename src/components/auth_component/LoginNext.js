@@ -11,7 +11,9 @@ const LoginNext = () => {
         {/* LOGIN FORM */}
         <div className={styles.flexbottom}>
           <div className={styles.head}>
-            <LeftButton className={styles.left} />
+            <Link to="/verifikasi">
+               <LeftButton className={styles.left} />
+            </Link>
             <h3 className={`${styles.h3} bold-32`}>Lengkapi Pendaftaran</h3>
           </div>
           <p className={`${styles.syarat} medium-12`}>
@@ -31,7 +33,7 @@ const LoginNext = () => {
               <label className={`${styles.label} medium-14`}>Konfirmasi password</label>
               <input className={`${styles.input} regular-14`} type="password" placeholder="masukkan password" name="password" />
             </div>
-            <button className={`${styles.button} semibold-16`}>Verifikasi</button>
+            <button className={`${styles.button} semibold-16`}>Daftar</button>
           </form>
 
           {/* DAFTAR */}

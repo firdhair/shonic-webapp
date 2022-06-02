@@ -13,14 +13,40 @@ import { useState } from 'react';
 const Register = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [fullName, setFullName] = useState('');
+  const [errorEmail, setErrorEmail] = useState('');
+
   const dispatch = useDispatch();
 
-  const handleSubmit = (e) => {
+   const validation = (e) => {
+    let isValid = true;
+    let emailInput = e.target.parentNode.childNodes[0].childNodes[1];
+    const regex = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+   
+        if(email && regex.test(email) === true){
+            setErrorEmail("")
+            emailInput.style.cssText = 'border:1px solid #e0e0e0';
+            isValid = true;
+          } else if(!email ||  regex.test(email) === false){
+            setErrorEmail("Format email tidak valid, contoh: shonic@gmail.com")
+            emailInput.style.cssText = 'border:1px solid red';
+            isValid = false;
+        }
+      return isValid;
+  }
+
+  const onSubmit = (e) => {
     e.preventDefault();
     console.log("ini handleSubmit register")
-    dispatch(registAccount(email, password));
-    setEmail('')
-    setPassword('')
+    console.log(e.target.parentNode.childNodes[0].childNodes[1])
+    if(validation(e)){
+        dispatch(registAccount(email, password));
+        console.log("yay lolos")
+        setErrorEmail("")
+    } 
+    // dispatch(registAccount(email, password));
+    // setEmail('')
+    // setPassword('')
   }
 
   return (
@@ -36,6 +62,11 @@ const Register = () => {
             <div className={styles.div}>
               <label className={`${styles.label} medium-14`}>email</label>
               <input className={`${styles.input} regular-14`} type="email" placeholder="masukkan email" name="email"  value={email} onChange={(e) => setEmail(e.target.value)} />
+              <span className={`${styles.span} regular-12`}>{errorEmail}</span>
+
+              <label className={`${styles.label} medium-14`}>fullname</label>
+              <input className={`${styles.input} regular-14`} type="text" placeholder="masukkan fullname" name="fullname"  value={fullName} onChange={(e) => setFullName(e.target.value)} />
+
               <label className={`${styles.label} medium-14`}>password</label>
               <input className={`${styles.input} regular-14`} type="password" placeholder="masukkan email" name="email"  value={password} onChange={(e) => setPassword(e.target.value)} />
             </div>
@@ -44,7 +75,10 @@ const Register = () => {
               <span> Syarat dan Ketentuan</span> serta
               <span> Kebijakan Privasi</span>
             </p>
-            <button className={`${styles.button} semibold-16`} onClick={handleSubmit}>Daftar</button>
+            <button className={`${styles.button} semibold-16`} onClick={onSubmit}>Daftar</button>
+            <Link to="/verifikasi">
+              <button className={`${styles.button} semibold-16`} >Daftar</button>
+            </Link>
           </form>
           {/* Aatau */}
           <div className={`${styles.accent} semibold-16`}>

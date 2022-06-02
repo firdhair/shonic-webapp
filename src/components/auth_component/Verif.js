@@ -11,7 +11,9 @@ const Verif = () => {
         {/* LOGIN FORM */}
         <div className={styles.flexbottom}>
           <div className={styles.head}>
-            <LeftButton className={styles.left} />
+            <Link to="/register">
+               <LeftButton className={styles.left} />
+            </Link>
             <h3 className={`${styles.h3} bold-32`}>Verifikasi akun</h3>
           </div>
           <p className={`${styles.syarat} medium-12`}>
@@ -28,6 +30,9 @@ const Verif = () => {
               <input className={`${styles.input} regular-14`} type="text" name="text" />
             </div>
             <button className={`${styles.button} semibold-16`}>Verifikasi</button>
+            <Link to="/lengkapipendaftaran">
+              <button className={`${styles.button} semibold-16`} >Verifikasi</button>
+            </Link>
           </form>
 
           {/* DAFTAR */}
