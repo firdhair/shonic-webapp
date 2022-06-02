@@ -1,4 +1,4 @@
-@use '../../mixin.scss' as mixin;
+@use "../../mixin.scss" as mixin;
 
 .outer {
   width: 100%;
@@ -10,7 +10,7 @@
   }
   @include mixin.desktop {
     display: flex;
-    height: 100vh;
+    min-height: 100vh;
     justify-content: center;
     align-items: center;
   }
@@ -41,17 +41,17 @@
 
     .flexbottom {
       flex-basis: 100%;
-      margin-bottom: 24px;
+      margin-bottom: 5rem;
       @include mixin.tablet {
         border-radius: 8px;
         padding: 42px;
         margin-top: 32px;
-        box-shadow: mixin.$shadow-elevation-3;
+        // box-shadow: mixin.$shadow-elevation-3;
       }
       @include mixin.desktop {
         width: auto;
         padding: 42px;
-        box-shadow: mixin.$shadow-elevation-6;
+        // box-shadow: mixin.$shadow-elevation-6;
       }
 
       .h3 {
@@ -86,6 +86,7 @@
   width: 100%;
   padding-block: 8px;
   border-radius: 6px;
+  cursor: pointer;
   background-color: mixin.$primary-button;
   color: mixin.$neutral-100;
   text-transform: capitalize;
@@ -100,6 +101,7 @@
   display: block;
   margin-top: 16px;
   width: 100%;
+  cursor: pointer;
   padding-block: 8px;
   border-radius: 6px;
   background-color: mixin.$neutral-100;

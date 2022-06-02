@@ -25,8 +25,10 @@ function App() {
           <Route path="login" element={<Login />}></Route>
           <Route path="register" element={<Register />}></Route>
           <Route path="resetpass" element={<ResetPass />}></Route>
+          <Route path="resetpass_next" element={<ResetPassNext />}></Route>
+          <Route path="resetpass_done" element={<ResetPassDone />}></Route>
           <Route path="verifikasi" element={<Veriffikasi />}></Route>
-          <Route path="lengkapipendaftaran" element={<LengkapiPendaftaran />}></Route>
+          <Route path="lengkapi_pendaftaran" element={<LengkapiPendaftaran />}></Route>
         </Route>
       </Routes>
       <FotAuth />

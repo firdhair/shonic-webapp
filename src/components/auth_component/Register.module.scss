@@ -5,7 +5,7 @@
   height: 100%;
   @include mixin.desktop {
     display: flex;
-    height: 100vh;
+    min-height: 100vh;
     justify-content: center;
     align-items: center;
   }
@@ -39,7 +39,7 @@
     }
     .flexbottom {
       flex-basis: 100%;
-      margin-bottom: 24px;
+      margin-bottom: 5rem;
       @include mixin.tablet {
         border-radius: 8px;
         padding: 42px;
@@ -71,6 +71,7 @@
 
 .form {
   margin-top: 24px;
+  margin-bottom: 5rem;
   .div {
     margin-block: 12px;
     .label {

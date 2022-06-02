@@ -11,7 +11,7 @@ const ResetPassNext = () => {
         <div className={styles.flexbottom}>
           <div className={styles.head}>
             <LeftButton className={styles.left} />
-            <h3 className={`${styles.h3} bold-32`}>buat password</h3>
+            <h3 className={`${styles.h3} bold-32`}>Atur Ulang Password </h3>
           </div>
           <p className={`${styles.syarat} medium-12`}>Masukkan email yang terdaftar pada akun Shonic untuk mengatur ulang password Anda </p>
 

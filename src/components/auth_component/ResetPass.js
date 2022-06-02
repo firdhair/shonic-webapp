@@ -15,7 +15,7 @@ const ResetPass = () => {
             <Link to="/login">
               <LeftButton className={styles.left} />
             </Link>
-            <h3 className={`${styles.h3} bold-32`}>Reset password</h3>
+            <h3 className={`${styles.h3} bold-32`}>Ganti password</h3>
           </div>
           <p className={`${styles.syarat} medium-12`}>Masukkan email yang terdaftar pada akun Shonic untuk mengatur ulang password Anda </p>
 

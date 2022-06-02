@@ -1,4 +1,4 @@
-@use '../../mixin.scss' as mixin;
+@use "../../mixin.scss" as mixin;
 
 .outer {
   width: 100%;
@@ -41,6 +41,7 @@
     .flexbottom {
       flex-basis: 100%;
       margin-bottom: 24px;
+      min-width: 30vw;
       @include mixin.tablet {
         border-radius: 8px;
         padding: 42px;
@@ -120,6 +121,7 @@
     margin-top: 24px;
     width: 100%;
     padding-block: 8px;
+    cursor: pointer;
     border-radius: 6px;
     background-color: mixin.$primary-button;
     color: mixin.$neutral-100;

@@ -30,7 +30,7 @@ const Verif = () => {
               <input className={`${styles.input} regular-14`} type="text" name="text" />
             </div>
             <button className={`${styles.button} semibold-16`}>Verifikasi</button>
-            <Link to="/lengkapipendaftaran">
+            <Link to="/lengkapi_pendaftaran">
               <button className={`${styles.button} semibold-16`} >Verifikasi</button>
             </Link>
           </form>

@@ -10,7 +10,7 @@
   }
   @include mixin.desktop {
     display: flex;
-    height: 100vh;
+    min-height: 100vh;
     justify-content: center;
     align-items: center;
   }
@@ -40,8 +40,8 @@
 
     .flexbottom {
       flex-basis: 100%;
-      margin-bottom: 24px;
-      min-width: 30vw;
+      margin-bottom: 5rem;
+      min-width: 35vw;
       @include mixin.tablet {
         border-radius: 8px;
         padding: 42px;
