@@ -45,7 +45,6 @@ const Login = () => {
           setEmail(email)
           console.log("berhasil")
           dispatch(loginActionAsync(email, password));
-       
     }
   };
 
