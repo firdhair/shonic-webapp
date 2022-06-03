@@ -1,5 +1,5 @@
 import { Route, Routes } from 'react-router-dom';
-import Auth from './pages/auth_page/Auth';
+// import Auth from './pages/auth_page/Auth';
 import Home from './pages/home_page/Home';
 
 //Component
@@ -14,6 +14,7 @@ import Login from '../src/components/auth_component/Login';
 import Register from '../src/components/auth_component/Register';
 import Veriffikasi from '../src/components/auth_component/Verif';
 import LengkapiPendaftaran from '../src/components/auth_component/LoginNext';
+import ResetPassVerif from './components/auth_component/ResetPassVerif';
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
           <Route path="resetpass" element={<ResetPass />}></Route>
           <Route path="resetpass_next" element={<ResetPassNext />}></Route>
           <Route path="resetpass_done" element={<ResetPassDone />}></Route>
+          <Route path="resetpass_verif" element={<ResetPassVerif />}></Route>
           <Route path="verifikasi" element={<Veriffikasi />}></Route>
           <Route path="lengkapi_pendaftaran" element={<LengkapiPendaftaran />}></Route>
         </Route>

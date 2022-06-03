@@ -23,45 +23,45 @@ const Login = () => {
     let passInput = e.target.parentNode.childNodes[1].childNodes[1];
     const regex = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
     const regularExpression = /^(?=.*[0-6])[a-zA-Z0-9!@#$%^&*]{6,16}$/;
-    
-        if(email && regex.test(email) === true){
-            setErrorEmail("")
-            emailInput.style.cssText = 'border:1px solid #e0e0e0';
-        } else if(!email ||  regex.test(email) === false){
-            setErrorEmail("Format email tidak valid, contoh: shonic@gmail.com")
-            emailInput.style.cssText = 'border:1px solid red';
-            isValid = false;
-        }
 
-        if(password && regularExpression.test(password) === true){
-            setErrorPass("")
-            passInput.style.cssText = 'border:1px solid #e0e0e0';
-        } else if (!password || regularExpression.test(password) === false){
-          setErrorPass("Password min. 6 karakter, terdiri dari angka dan huruf") 
-          passInput.style.cssText = 'border:1px solid red';
-          isValid = false;
-        }
+    if (email && regex.test(email) === true) {
+      setErrorEmail('');
+      emailInput.style.cssText = 'border:1px solid #e0e0e0';
+    } else if (!email || regex.test(email) === false) {
+      setErrorEmail('Format email tidak valid, contoh: shonic@gmail.com');
+      emailInput.style.cssText = 'border:1px solid red';
+      isValid = false;
+    }
 
-        if(password && regularExpression.test(password) === true && email && regex.test(email) === true){
-          isValid = true;
-        }
-        
-      return isValid;
-  }
+    if (password && regularExpression.test(password) === true) {
+      setErrorPass('');
+      passInput.style.cssText = 'border:1px solid #e0e0e0';
+    } else if (!password || regularExpression.test(password) === false) {
+      setErrorPass('Password min. 6 karakter, terdiri dari angka dan huruf');
+      passInput.style.cssText = 'border:1px solid red';
+      isValid = false;
+    }
+
+    if (password && regularExpression.test(password) === true && email && regex.test(email) === true) {
+      isValid = true;
+    }
+
+    return isValid;
+  };
 
   const onSubmit = (e) => {
     e.preventDefault();
-    console.log("email: ",email,", password: ", password)
-    console.log('ini handleSubmit'); 
+    console.log('email: ', email, ', password: ', password);
+    console.log('ini handleSubmit');
     let emailInput = e.target.parentNode.childNodes[0].childNodes[1];
     let passInput = e.target.parentNode.childNodes[1].childNodes[1];
 
-    if(validation(e)){
-        dispatch(loginActionAsync(email, password));
-        console.log("yay lolos")
-        setErrorEmail("")
-        setErrorPass("")
-    } 
+    if (validation(e)) {
+      dispatch(loginActionAsync(email, password));
+      console.log('yay lolos');
+      setErrorEmail('');
+      setErrorPass('');
+    }
   };
 
   return (
@@ -82,7 +82,7 @@ const Login = () => {
             <div className={styles.div}>
               <label className={`${styles.label} medium-14`}>password</label>
               <input className={`${styles.input} regular-14`} type="password" placeholder="masukkan password" name="password" value={password} onChange={(e) => setPassword(e.target.value)} />
-                <span className={`${styles.span} regular-12`}>{errorPass}</span>
+              <span className={`${styles.span} regular-12`}>{errorPass}</span>
             </div>
             <p className={`${styles.forgotPassword} medium-12`}>
               <Link to="/resetpass">Lupa Password?</Link>
