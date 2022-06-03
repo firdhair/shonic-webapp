@@ -1,4 +1,4 @@
-@use '../../mixin.scss' as mixin;
+@use "../../mixin.scss" as mixin;
 
 .error {
   background-color: red;
@@ -114,6 +114,7 @@
       border-radius: 6px;
       border: 1px solid mixin.$neutral-400;
       margin-top: 4px;
+      margin-bottom: 0.5rem;
       padding: 8px;
       width: 100%;
       &::placeholder {
@@ -123,6 +124,11 @@
         outline: none;
         border: 1px solid mixin.$primary-button;
       }
+    }
+    span {
+      color: mixin.$secondary-danger;
+      //background-color: lavender;
+      //margin: 0.3rem;
     }
   }
   .button {

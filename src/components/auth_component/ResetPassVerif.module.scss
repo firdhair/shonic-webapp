@@ -1,4 +1,4 @@
-@use '../../mixin.scss' as mixin;
+@use "../../mixin.scss" as mixin;
 
 .outer {
   width: 100%;
@@ -10,7 +10,7 @@
   }
   @include mixin.desktop {
     display: flex;
-    height: 100vh;
+    min-height: 100vh;
     justify-content: center;
     align-items: center;
   }
@@ -41,10 +41,12 @@
     .flexbottom {
       flex-basis: 100%;
       margin-bottom: 24px;
+      min-width: 30vw;
       @include mixin.tablet {
         border-radius: 8px;
         padding: 42px;
         margin-top: 32px;
+        margin-bottom: 5rem;
         box-shadow: mixin.$shadow-elevation-3;
       }
       @include mixin.desktop {

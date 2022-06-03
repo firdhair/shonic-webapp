@@ -5,6 +5,7 @@ import { GoogleIcon } from '../../images/icons/ShonicIcon';
 import styles from './Login.module.scss';
 //react router
 import { Link } from 'react-router-dom';
+import {useHistory } from "react-router-dom"
 // necessary dependencies
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchPostStart, loginActionAsync } from '../action';
@@ -16,6 +17,7 @@ const Login = () => {
   const [errorEmail, setErrorEmail] = useState('');
   const [errorPass, setErrorPass] = useState('');
   const dispatch = useDispatch();
+  //let history = useHistory()
 
   const validation = (e) => {
     let isValid = true;
@@ -53,8 +55,6 @@ const Login = () => {
     e.preventDefault();
     console.log('email: ', email, ', password: ', password);
     console.log('ini handleSubmit');
-    let emailInput = e.target.parentNode.childNodes[0].childNodes[1];
-    let passInput = e.target.parentNode.childNodes[1].childNodes[1];
 
     if (validation(e)) {
       dispatch(loginActionAsync(email, password));

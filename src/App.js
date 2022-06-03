@@ -15,14 +15,17 @@ import Register from '../src/components/auth_component/Register';
 import Veriffikasi from '../src/components/auth_component/Verif';
 import LengkapiPendaftaran from '../src/components/auth_component/LoginNext';
 import ResetPassVerif from './components/auth_component/ResetPassVerif';
+import ProtectedRoute from '../src/components/auth_component/ProtectedRoute'
 
 function App() {
   return (
     <>
       <NavAuth />
       <Routes>
-        <Route path="/">
-          <Route index element={<Home />}></Route>
+          <Route index element={<Login />}></Route>
+          <Route element={<ProtectedRoute/>}>
+              <Route path="/home" element={<Home />}/>
+          </Route>
           <Route path="login" element={<Login />}></Route>
           <Route path="register" element={<Register />}></Route>
           <Route path="resetpass" element={<ResetPass />}></Route>
@@ -31,7 +34,7 @@ function App() {
           <Route path="resetpass_verif" element={<ResetPassVerif />}></Route>
           <Route path="verifikasi" element={<Veriffikasi />}></Route>
           <Route path="lengkapi_pendaftaran" element={<LengkapiPendaftaran />}></Route>
-        </Route>
+
       </Routes>
       <FotAuth />
     </>

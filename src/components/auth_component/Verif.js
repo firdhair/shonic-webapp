@@ -2,9 +2,17 @@
 import styles from './Verif.module.scss';
 //react router
 import { Link } from 'react-router-dom';
+import {useNavigate } from "react-router-dom"
 import { LeftButton } from '../../images/icons/ShonicIcon';
 
 const Verif = () => {
+  let history = useNavigate()
+
+  const onVerification = (e) => {
+    e.preventDefault();
+    history('/lengkapi_pendaftaran')
+  }
+
   return (
     <div className={styles.outer}>
       <div className={`${styles.flexcontainer} container`}>
@@ -29,10 +37,7 @@ const Verif = () => {
               <input className={`${styles.input} regular-14`} type="text" name="text" />
               <input className={`${styles.input} regular-14`} type="text" name="text" />
             </div>
-            <button className={`${styles.button} semibold-16`}>Verifikasi</button>
-            <Link to="/lengkapi_pendaftaran">
-              <button className={`${styles.button} semibold-16`} >Verifikasi</button>
-            </Link>
+            <button className={`${styles.button} semibold-16`} onClick={onVerification}>Verifikasi</button>
           </form>
 
           {/* DAFTAR */}

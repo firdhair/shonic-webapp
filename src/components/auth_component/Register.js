@@ -5,6 +5,7 @@ import { GoogleIcon } from '../../images/icons/ShonicIcon';
 import styles from './Register.module.scss';
 //react router
 import { Link } from 'react-router-dom';
+import {useNavigate } from "react-router-dom"
 // necessary dependencies
 import { useDispatch, useSelector } from 'react-redux';
 import { registAccount, loginActionAsync } from '../action';
@@ -15,6 +16,7 @@ const Register = () => {
   const [password, setPassword] = useState('');
   const [fullName, setFullName] = useState('');
   const [errorEmail, setErrorEmail] = useState('');
+  let history = useNavigate()
 
   const dispatch = useDispatch();
 
@@ -40,13 +42,12 @@ const Register = () => {
     console.log("ini handleSubmit register")
     console.log(e.target.parentNode.childNodes[0].childNodes[1])
     if(validation(e)){
-        dispatch(registAccount(email, password));
-        console.log("yay lolos")
+        dispatch(registAccount(email, fullName, password));
+        console.log("yay lolos", email, fullName, password)
         setErrorEmail("")
+        //history('/verifikasi')
     } 
-    // dispatch(registAccount(email, password));
-    // setEmail('')
-    // setPassword('')
+    //dispatch(registAccount(email, fullName, password));
   }
 
   return (
@@ -76,9 +77,6 @@ const Register = () => {
               <span> Kebijakan Privasi</span>
             </p>
             <button className={`${styles.button} semibold-16`} onClick={onSubmit}>Daftar</button>
-            <Link to="/verifikasi">
-              <button className={`${styles.button} semibold-16`} >Daftar</button>
-            </Link>
           </form>
           {/* Aatau */}
           <div className={`${styles.accent} semibold-16`}>
