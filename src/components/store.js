@@ -4,7 +4,7 @@ import thunk from 'redux-thunk'
 import reducer from './reducer'
 import {persistStore, persistReducer} from 'redux-persist'
 
-const baseUrl = ''
+const baseUrl = 'https://shonic-test.herokuapp.com'
 
 const composeEnhancers = (typeof window !== 'undefined' && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) ||compose
 

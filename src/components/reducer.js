@@ -1,8 +1,10 @@
+import { Redirect, Route } from "react-router";
 const initialState = {
     email:'',
     password:'',
     username:'',
     loading: false,
+    status: '',
     error: ''
 }
 

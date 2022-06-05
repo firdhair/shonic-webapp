@@ -4,7 +4,7 @@ import { GoogleIcon } from '../../images/icons/ShonicIcon';
 //css
 import styles from './Login.module.scss';
 //react router
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import {useHistory } from "react-router-dom"
 // necessary dependencies
 import { useDispatch, useSelector } from 'react-redux';
@@ -17,7 +17,7 @@ const Login = () => {
   const [errorEmail, setErrorEmail] = useState('');
   const [errorPass, setErrorPass] = useState('');
   const dispatch = useDispatch();
-  //let history = useHistory()
+  let history = useNavigate()
 
   const validation = (e) => {
     let isValid = true;
@@ -57,10 +57,15 @@ const Login = () => {
     console.log('ini handleSubmit');
 
     if (validation(e)) {
-      dispatch(loginActionAsync(email, password));
-      console.log('yay lolos');
-      setErrorEmail('');
-      setErrorPass('');
+      try {
+        dispatch(loginActionAsync(email, password));
+        console.log('yay lolos');
+        setErrorEmail('');
+        setErrorPass('');
+        history("/")
+      } catch (e) {
+        console.log("e", e)
+      }
     }
   };
 
