@@ -58,7 +58,7 @@ const Login = () => {
 
     if (validation(e)) {
       try {
-        dispatch(loginActionAsync(email, password));
+        dispatch(loginActionAsync(email, password, history));
         console.log('yay lolos');
         setErrorEmail('');
         setErrorPass('');

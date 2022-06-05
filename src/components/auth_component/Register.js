@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 import {useNavigate } from "react-router-dom"
 // necessary dependencies
 import { useDispatch, useSelector } from 'react-redux';
-import { registAccount, loginActionAsync } from '../action';
+import { checkEmailAsync } from '../action';
 import { useState } from 'react';
 
 const Register = () => {
@@ -16,11 +16,11 @@ const Register = () => {
   const [password, setPassword] = useState('');
   const [fullName, setFullName] = useState('');
   const [errorEmail, setErrorEmail] = useState('');
-  let history = useNavigate()
 
+  let history = useNavigate()
   const dispatch = useDispatch();
 
-   const validation = (e) => {
+  const validation = (e) => {
     let isValid = true;
     let emailInput = e.target.parentNode.childNodes[0].childNodes[1];
     const regex = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
@@ -42,10 +42,11 @@ const Register = () => {
     console.log("ini handleSubmit register")
     console.log(e.target.parentNode.childNodes[0].childNodes[1])
     if(validation(e)){
-        dispatch(registAccount(email, fullName, password));
+        //dispatch(registAccountAsync(email, fullName, password));
+        dispatch(checkEmailAsync(email, history))
         console.log("yay lolos", email, fullName, password)
         setErrorEmail("")
-        //history('/verifikasi')
+        // history('/verifikasi')
     } 
     //dispatch(registAccount(email, fullName, password));
   }
@@ -65,11 +66,11 @@ const Register = () => {
               <input className={`${styles.input} regular-14`} type="email" placeholder="masukkan email" name="email"  value={email} onChange={(e) => setEmail(e.target.value)} />
               <span className={`${styles.span} regular-12`}>{errorEmail}</span>
 
-              <label className={`${styles.label} medium-14`}>fullname</label>
+              {/* <label className={`${styles.label} medium-14`}>fullname</label>
               <input className={`${styles.input} regular-14`} type="text" placeholder="masukkan fullname" name="fullname"  value={fullName} onChange={(e) => setFullName(e.target.value)} />
 
               <label className={`${styles.label} medium-14`}>password</label>
-              <input className={`${styles.input} regular-14`} type="password" placeholder="masukkan email" name="email"  value={password} onChange={(e) => setPassword(e.target.value)} />
+              <input className={`${styles.input} regular-14`} type="password" placeholder="masukkan email" name="email"  value={password} onChange={(e) => setPassword(e.target.value)} /> */}
             </div>
             <p className={`${styles.syarat} medium-12`}>
               Dengan mendaftar, saya menyetujui
