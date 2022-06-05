@@ -7,7 +7,7 @@ import ResetPassDone from '../../components/auth_component/ResetPassDone';
 //css
 import styles from './Auth.module.scss';
 //react router
-/* import Login from '../../components/auth_component/Login'; */
+import Login from '../../components/auth_component/Login';
 /* import Register from '../../components/auth_component/Register'; */
 /* import Verif from '../../components/auth_component/Verif'; */
 /* import LoginNext from '../../components/auth_component/LoginNext'; */
@@ -17,7 +17,7 @@ const Auth = () => {
     <>
       <section className={styles.relative}>
         <NavAuth />
-        {/* <Login /> */}
+        <Login />
         {/* <Register /> */}
         {/*      <Verif /> */}
         {/* <LoginNext /> */}

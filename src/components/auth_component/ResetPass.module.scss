@@ -1,5 +1,8 @@
-@use '../../mixin.scss' as mixin;
+@use "../../mixin.scss" as mixin;
 
+.error {
+  background-color: red;
+}
 .outer {
   width: 100%;
   height: 100%;
@@ -18,7 +21,6 @@
   .flexcontainer {
     padding-top: 56px;
     width: 100%;
-
     height: auto;
     display: flex;
     flex-direction: column;
@@ -41,7 +43,9 @@
 
     .flexbottom {
       flex-basis: 100%;
+      min-width: 30vw;
       margin-bottom: 24px;
+
       @include mixin.tablet {
         border-radius: 8px;
         padding: 42px;
@@ -52,6 +56,11 @@
         width: auto;
         padding: 42px;
         box-shadow: mixin.$shadow-elevation-6;
+      }
+      span {
+        a {
+          color: mixin.$primary-button;
+        }
       }
       .head {
         display: flex;
@@ -85,7 +94,7 @@
 .syarat {
   color: mixin.$neutral-900;
   text-align: center;
-  margin-block: 42px;
+  margin-block: 3rem;
   & > * {
     color: mixin.$primary-text;
   }
@@ -105,6 +114,7 @@
       border-radius: 6px;
       border: 1px solid mixin.$neutral-400;
       margin-top: 4px;
+      margin-bottom: 0.5rem;
       padding: 8px;
       width: 100%;
       &::placeholder {
@@ -115,11 +125,17 @@
         border: 1px solid mixin.$primary-button;
       }
     }
+    span {
+      color: mixin.$secondary-danger;
+      //background-color: lavender;
+      //margin: 0.3rem;
+    }
   }
   .button {
     display: block;
     margin-top: 24px;
     width: 100%;
+    cursor: pointer;
     padding-block: 8px;
     border-radius: 6px;
     background-color: mixin.$primary-button;
