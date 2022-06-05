@@ -40,12 +40,13 @@
 
     .flexbottom {
       flex-basis: 100%;
-      margin-bottom: 5rem;
-      min-width: 35vw;
+      margin-bottom: 24px;
+      min-width: 30vw;
       @include mixin.tablet {
         border-radius: 8px;
         padding: 42px;
         margin-top: 32px;
+        margin-bottom: 5rem;
         box-shadow: mixin.$shadow-elevation-3;
       }
       @include mixin.desktop {
@@ -92,38 +93,32 @@
 
 .form {
   margin-top: 24px;
-  .div {
+  .input {
     margin-block: 12px;
-    .label {
-      display: block;
-      text-transform: capitalize;
-      color: mixin.$neutral-900;
+    display: block;
+    border-radius: 6px;
+    border: 1px solid mixin.$neutral-400;
+    padding: 8px;
+    width: 100%;
+    height: 48px;
+    &::placeholder {
+      color: mixin.$neutral-600;
     }
-    .input {
-      display: block;
-      border-radius: 6px;
-      border: 1px solid mixin.$neutral-400;
-      margin-top: 4px;
-      padding: 8px;
-      width: 100%;
-      &::placeholder {
-        color: mixin.$neutral-600;
-      }
-      &:focus {
-        outline: none;
-        border: 1px solid mixin.$primary-button;
-      }
+    &:focus {
+      outline: none;
+      border: 1px solid mixin.$primary-button;
     }
   }
+
   .button {
     display: block;
-    margin-top: 24px;
+    margin-block: 24px;
     width: 100%;
     padding-block: 8px;
     border-radius: 6px;
-    cursor: pointer;
     background-color: mixin.$primary-button;
     color: mixin.$neutral-100;
+    cursor: pointer;
     text-transform: capitalize;
     border: none;
     &:hover {
@@ -137,6 +132,7 @@
   text-align: center;
   text-transform: initial;
   color: mixin.$neutral-900;
+  // margin: 24px 0 64px 0;
   margin-top: 24px;
   .link {
     text-decoration: none;

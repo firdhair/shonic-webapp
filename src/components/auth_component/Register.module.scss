@@ -1,11 +1,11 @@
-@use '../../mixin.scss' as mixin;
+@use "../../mixin.scss" as mixin;
 
 .outer {
   width: 100%;
   height: 100%;
   @include mixin.desktop {
     display: flex;
-    height: 100vh;
+    min-height: 100vh;
     justify-content: center;
     align-items: center;
   }
@@ -39,7 +39,7 @@
     }
     .flexbottom {
       flex-basis: 100%;
-      margin-bottom: 24px;
+      margin-bottom: 5rem;
       @include mixin.tablet {
         border-radius: 8px;
         padding: 42px;
@@ -71,18 +71,21 @@
 
 .form {
   margin-top: 24px;
+  margin-bottom: 5rem;
   .div {
     margin-block: 12px;
     .label {
       display: block;
       text-transform: capitalize;
       color: mixin.$neutral-900;
+      margin-top: 1rem;
     }
     .input {
       display: block;
       border-radius: 6px;
       border: 1px solid mixin.$neutral-400;
-      margin-top: 4px;
+      margin-top: 0.5rem;
+      margin-bottom: 0.5rem;
       padding: 8px;
       width: 100%;
       &::placeholder {
@@ -93,9 +96,13 @@
         border: 1px solid mixin.$primary-button;
       }
     }
+    span {
+      color: mixin.$secondary-danger;
+    }
   }
   .syarat {
     color: mixin.$neutral-900;
+    margin-bottom: 5rem;
     & > * {
       color: mixin.$primary-text;
     }
@@ -110,6 +117,7 @@
     color: mixin.$neutral-100;
     text-transform: capitalize;
     border: none;
+    cursor: pointer;
     &:hover {
       background-color: mixin.$primary-hover;
       transition: background-color 0.2s ease-in-out;

@@ -1,16 +1,16 @@
 //css
-import styles from './Verif.module.scss';
+import styles from './ResetPassVerif.module.scss';
 //react router
 import { Link } from 'react-router-dom';
 import {useNavigate } from "react-router-dom"
 import { LeftButton } from '../../images/icons/ShonicIcon';
 
-const Verif = () => {
+const ResetPassVerif = () => {
   let history = useNavigate()
-
+  
   const onVerification = (e) => {
     e.preventDefault();
-    history('/lengkapi_pendaftaran')
+    history('/resetpass_next')
   }
 
   return (
@@ -19,25 +19,19 @@ const Verif = () => {
         {/* LOGIN FORM */}
         <div className={styles.flexbottom}>
           <div className={styles.head}>
-            <Link to="/register">
-               <LeftButton className={styles.left} />
+            <Link to="/resetpass">
+              <LeftButton className={styles.left} />
             </Link>
-            <h3 className={`${styles.h3} bold-32`}>Verifikasi akun</h3>
+            <h3 className={`${styles.h3} bold-32`}>Verifikasi Password</h3>
           </div>
           <p className={`${styles.syarat} medium-12`}>
-            Kode berhasil dikirim melalui email <span>shonic@gmail.com</span>, periksa dan masukkan kode disini untuk dapat membuat akun baru
+            Kode berhasil dikirim melalui email <span>shonic@gmail.com</span>, periksa dan masukkan kode disini untuk dapat melakukan reset password
           </p>
 
           <form className={styles.form}>
-            <div className={styles.div}>
-              <input className={`${styles.input} regular-14`} type="text" name="text" />
-              <input className={`${styles.input} regular-14`} type="text" name="text" />
-              <input className={`${styles.input} regular-14`} type="text" name="text" />
-              <input className={`${styles.input} regular-14`} type="text" name="text" />
-              <input className={`${styles.input} regular-14`} type="text" name="text" />
-              <input className={`${styles.input} regular-14`} type="text" name="text" />
-            </div>
+            <input className={`${styles.input} regular-14`} type="text" name="text" />
             <button className={`${styles.button} semibold-16`} onClick={onVerification}>Verifikasi</button>
+            
           </form>
 
           {/* DAFTAR */}
@@ -54,4 +48,4 @@ const Verif = () => {
   );
 };
 
-export default Verif;
+export default ResetPassVerif;

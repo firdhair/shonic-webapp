@@ -4,9 +4,71 @@ import { GoogleIcon } from '../../images/icons/ShonicIcon';
 //css
 import styles from './Login.module.scss';
 //react router
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import {useHistory } from "react-router-dom"
+// necessary dependencies
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchPostStart, loginActionAsync } from '../action';
+import { useState } from 'react';
 
 const Login = () => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [errorEmail, setErrorEmail] = useState('');
+  const [errorPass, setErrorPass] = useState('');
+  const dispatch = useDispatch();
+  let history = useNavigate()
+
+  const validation = (e) => {
+    let isValid = true;
+    let emailInput = e.target.parentNode.childNodes[0].childNodes[1];
+    let passInput = e.target.parentNode.childNodes[1].childNodes[1];
+    const regex = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+    const regularExpression = /^(?=.*[0-6])[a-zA-Z0-9!@#$%^&*]{6,16}$/;
+
+    if (email && regex.test(email) === true) {
+      setErrorEmail('');
+      emailInput.style.cssText = 'border:1px solid #e0e0e0';
+    } else if (!email || regex.test(email) === false) {
+      setErrorEmail('Format email tidak valid, contoh: shonic@gmail.com');
+      emailInput.style.cssText = 'border:1px solid red';
+      isValid = false;
+    }
+
+    if (password && regularExpression.test(password) === true) {
+      setErrorPass('');
+      passInput.style.cssText = 'border:1px solid #e0e0e0';
+    } else if (!password || regularExpression.test(password) === false) {
+      setErrorPass('Password min. 6 karakter, terdiri dari angka dan huruf');
+      passInput.style.cssText = 'border:1px solid red';
+      isValid = false;
+    }
+
+    if (password && regularExpression.test(password) === true && email && regex.test(email) === true) {
+      isValid = true;
+    }
+
+    return isValid;
+  };
+
+  const onSubmit = (e) => {
+    e.preventDefault();
+    console.log('email: ', email, ', password: ', password);
+    console.log('ini handleSubmit');
+
+    if (validation(e)) {
+      try {
+        dispatch(loginActionAsync(email, password));
+        console.log('yay lolos');
+        setErrorEmail('');
+        setErrorPass('');
+        history("/")
+      } catch (e) {
+        console.log("e", e)
+      }
+    }
+  };
+
   return (
     <div className={styles.outer}>
       <div className={`${styles.flexcontainer} container`}>
@@ -19,13 +81,20 @@ const Login = () => {
           <form className={styles.form}>
             <div className={styles.div}>
               <label className={`${styles.label} medium-14`}>email</label>
-              <input className={`${styles.input} regular-14`} type="email" placeholder="masukkan email" name="email" />
+              <input className={`${styles.input} regular-14`} type="email" placeholder="masukkan email" name="email" value={email} onChange={(e) => setEmail(e.target.value)} />
+              <span className={`${styles.span} regular-12`}>{errorEmail}</span>
             </div>
             <div className={styles.div}>
               <label className={`${styles.label} medium-14`}>password</label>
-              <input className={`${styles.input} regular-14`} type="password" placeholder="masukkan password" name="password" />
+              <input className={`${styles.input} regular-14`} type="password" placeholder="masukkan password" name="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+              <span className={`${styles.span} regular-12`}>{errorPass}</span>
             </div>
-            <button className={`${styles.button} semibold-16`}>Masuk</button>
+            <p className={`${styles.forgotPassword} medium-12`}>
+              <Link to="/resetpass">Lupa Password?</Link>
+            </p>
+            <button className={`${styles.button} semibold-16`} onClick={onSubmit}>
+              Masuk
+            </button>
           </form>
           {/* Aatau */}
           <div className={`${styles.accent} semibold-16`}>
@@ -46,7 +115,7 @@ const Login = () => {
           <p className={`${styles.daftar} medium-14`}>
             belum punya akun?
             <span> </span>
-            <Link to="/" className={styles.link}>
+            <Link to="/register" className={styles.link}>
               daftar
             </Link>
           </p>

@@ -2,6 +2,7 @@
 import { ResetDone } from '../../images/pictures/ResetDone';
 import styles from './ResetPassDone.module.scss';
 //react router
+import { Link } from 'react-router-dom';
 
 const ResetPassDone = () => {
   return (
@@ -13,7 +14,10 @@ const ResetPassDone = () => {
           <ResetDone />
           <p className={`${styles.syarat} medium-12`}>Silakan masuk ke akunmu dengan password yang baru</p>
           <button className={`${styles.button} semibold-16`}>masuk</button>
+          <Link to="/">
+              
           <button className={`${styles.back} semibold-16`}>kembali ke beranda</button>
+          </Link>
         </div>
       </div>
     </div>
