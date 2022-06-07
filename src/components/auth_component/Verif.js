@@ -1,16 +1,26 @@
 //css
 import styles from './Verif.module.scss';
+import { LeftButton } from '../../images/icons/ShonicIcon';
 //react router
 import { Link } from 'react-router-dom';
+import { useSelector, useDispatch } from "react-redux";
 import {useNavigate } from "react-router-dom"
-import { LeftButton } from '../../images/icons/ShonicIcon';
+import { useState } from 'react';
+import { otpVerifAsync } from '../action';
 
 const Verif = () => {
+  const { email } = useSelector((state) => state);
+  const [otp, setOtp] = useState();
+  
+  const dispatch = useDispatch();
   let history = useNavigate()
 
+  console.log("email verif: ", email)
   const onVerification = (e) => {
     e.preventDefault();
-    history('/lengkapi_pendaftaran')
+    console.log("otp", otp, "email", email)
+    dispatch(otpVerifAsync(email, otp, history))
+    //history('/lengkapi_pendaftaran')
   }
 
   return (
@@ -29,15 +39,9 @@ const Verif = () => {
           </p>
 
           <form className={styles.form}>
-            <div className={styles.div}>
-              <input className={`${styles.input} regular-14`} type="text" name="text" />
-              <input className={`${styles.input} regular-14`} type="text" name="text" />
-              <input className={`${styles.input} regular-14`} type="text" name="text" />
-              <input className={`${styles.input} regular-14`} type="text" name="text" />
-              <input className={`${styles.input} regular-14`} type="text" name="text" />
-              <input className={`${styles.input} regular-14`} type="text" name="text" />
-            </div>
+            <input className={`${styles.input} regular-14`} type="text" name="text" value={otp} onChange={(e) => setOtp(e.target.value)}/>
             <button className={`${styles.button} semibold-16`} onClick={onVerification}>Verifikasi</button>
+            
           </form>
 
           {/* DAFTAR */}

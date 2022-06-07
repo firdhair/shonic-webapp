@@ -1,10 +1,49 @@
 //css
 import styles from './LoginNext.module.scss';
 //react router
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { LeftButton } from '../../images/icons/ShonicIcon';
+// necessary dependencies
+import { useDispatch, useSelector } from 'react-redux';
+import { checkEmailAsync, registAccountAsync } from '../action';
+import { useState } from 'react';
 
 const LoginNext = () => {
+  const [fullName, setFullName] = useState('');
+  const [password, setPassword] = useState('');
+  const [konfirmasiPassword, setKonfirmasiPassword] = useState('');
+  const [errorPass, setErrorPass] = useState('');
+  const { email } = useSelector((state) => state);
+
+  let history = useNavigate()
+  const dispatch = useDispatch();
+
+  const createAccount = (e) => {
+    e.preventDefault();
+    //console.log(e.target.parentNode.childNodes[2].childNodes[1])
+    console.log("halo ini create account", fullName, password, konfirmasiPassword)
+    if(validation(e)){
+      dispatch(registAccountAsync(email, fullName, password, history))
+    }
+  }
+
+  const validation = (e) => {
+    let isValid = false;
+    let konfirmasiInput = e.target.parentNode.childNodes[2].childNodes[1]
+    console.log(konfirmasiInput)
+    if(password !== konfirmasiPassword){
+      setErrorPass('Password tidak sama');
+      konfirmasiInput.style.cssText = 'border:1px solid #CB3A31';
+      isValid = false;
+      console.log(errorPass)
+    } else {
+      console.log("password sama")
+      setErrorPass('');
+      isValid = true;
+    }
+    return isValid;
+  }
+
   return (
     <div className={styles.outer}>
       <div className={`${styles.flexcontainer} container`}>
@@ -23,17 +62,18 @@ const LoginNext = () => {
           <form className={styles.form}>
             <div className={styles.div}>
               <label className={`${styles.label} medium-14`}>Nama Lengkap</label>
-              <input className={`${styles.input} regular-14`} type="email" placeholder="Contoh: Rachel Anastasya" name="email" />
+              <input className={`${styles.input} regular-14`} type="email" placeholder="Contoh: Rachel Anastasya" name="name" value={fullName} onChange={(e)=> setFullName(e.target.value)}/>
             </div>
             <div className={styles.div}>
               <label className={`${styles.label} medium-14`}>password</label>
-              <input className={`${styles.input} regular-14`} type="password" placeholder="masukkan password" name="password" />
+              <input className={`${styles.input} regular-14`} type="password" placeholder="masukkan password" name="password" value={password} onChange={(e)=> setPassword(e.target.value)}/>
             </div>
             <div className={styles.div}>
               <label className={`${styles.label} medium-14`}>Konfirmasi password</label>
-              <input className={`${styles.input} regular-14`} type="password" placeholder="masukkan password" name="password" />
+              <input className={`${styles.input} regular-14`} type="password" placeholder="masukkan password" name="password" value={konfirmasiPassword} onChange={(e)=> setKonfirmasiPassword(e.target.value)}/>
+               <span className={`${styles.span} regular-12`}>{errorPass}</span>
             </div>
-            <button className={`${styles.button} semibold-16`}>Daftar</button>
+            <button className={`${styles.button} semibold-16`} onClick={createAccount}>Daftar</button>
           </form>
 
           {/* DAFTAR */}

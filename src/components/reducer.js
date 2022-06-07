@@ -2,9 +2,7 @@ import { Redirect, Route } from "react-router";
 const initialState = {
     email:'',
     password:'',
-    username:'',
     loading: false,
-    status: '',
     error: ''
 }
 
@@ -24,6 +22,12 @@ export default function reducer(state = initialState, action) {
                 ...state,
                 ...payload
         }
+        case 'check-email/success':
+            console.log("check-email success")
+            return {
+                ...state, 
+                email: payload
+            }
         default:
             return state
     }
