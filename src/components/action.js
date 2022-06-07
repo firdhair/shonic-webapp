@@ -36,11 +36,9 @@ const loginActionSuccess = (payload) => (
 
 
 const registAccountAsync = (email, fullname, password, history) => {
- console.log("email:", email, "fullname: ", fullname, "password: ", password)
+ //console.log("email:", email, "fullname: ", fullname, "password: ", password)
   
  return (dispatch, getState, baseUrl) => {
-    // baseUrl/users/authenticate
-    //console.log("ini regist account")
     axios.post(`${baseUrl}/api/v1/auth/register`, {
       email,
       fullname,
@@ -53,8 +51,6 @@ const registAccountAsync = (email, fullname, password, history) => {
       console.log("response data: ", response.data)
       console.log("berhasil regist!")
       history('/login')
-      //dispatch(checkEmail(email))
-      //dispatch(loginActionSuccess({ username, password }));
     }).catch((error) => {
       console.log("error", error)
     });
@@ -62,7 +58,6 @@ const registAccountAsync = (email, fullname, password, history) => {
 }
 
 const checkEmailAsync = (email, history) => {
-  //let history = useNavigate()
   return(dispatch, getState, baseUrl) => {
     console.log(email, typeof email)
   
@@ -73,7 +68,6 @@ const checkEmailAsync = (email, history) => {
       console.log("response data email: ", response.data)
       console.log("status: ", response.status)
         console.log("email sudah terdaftar")
-        //dispatch(checkEmailFailed)
         dispatch(checkEmailSucces(email))
         history('/verifikasi')   
     }).catch((error) => {
@@ -109,15 +103,6 @@ const otpVerifAsync = (email, otp, history) => {
     })
   }
 }
-
-// (payload) => {
-//   console.log("payload email success", payload),
-//   {
-//     type: 'check-email/success',
-//     payload
-//   }
-// }
-
 
 export{
     fetchPostStart,
