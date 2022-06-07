@@ -22,9 +22,9 @@ function App() {
     <>
       <NavAuth />
       <Routes>
-          <Route index element={<Login />}></Route>
+          {/* <Route index element={<Login />}></Route> */}
           <Route element={<ProtectedRoute/>}>
-              <Route path="/home" element={<Home />}/>
+              <Route path="/" element={<Home />}/>
           </Route>
           <Route path="login" element={<Login />}></Route>
           <Route path="register" element={<Register />}></Route>

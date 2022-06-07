@@ -62,7 +62,7 @@ const Login = () => {
         console.log('yay lolos');
         setErrorEmail('');
         setErrorPass('');
-        history("/")
+        // history("/")
       } catch (e) {
         console.log("e", e)
       }

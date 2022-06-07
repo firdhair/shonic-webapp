@@ -1,0 +1,106 @@
+@use "../../mixin.scss" as mixin;
+
+.modal {
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: white;
+  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+
+  .modal_content {
+    background-color: white;
+    width: 22%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 25vh;
+    padding: 0.5rem;
+    margin: auto;
+    border-radius: 0.8rem;
+
+    @include mixin.tablet {
+      min-width: 50%;
+    }
+
+    @include mixin.mobile {
+      min-width: 80%;
+      min-height: 60vh;
+      //background-color: lavender;
+    }
+
+    .close {
+      color: #aaaaaa;
+      //float: right;
+      //background-color: lavender;
+      position: relative;
+      right: -45%;
+      //right: 0;
+      font-size: 20px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    p,
+    h1 {
+      margin: 0.5rem 0rem;
+    }
+    p {
+      color: mixin.$neutral-700;
+      font-size: 12px;
+      font-weight: 400;
+      text-align: center;
+    }
+    h1 {
+      color: mixin.$neutral-900;
+      text-align: center;
+    }
+    .choices {
+      //background-color: lavender;
+      width: 90%;
+      display: flex;
+      justify-content: space-around;
+      @include mixin.tablet {
+        flex-wrap: wrap;
+        margin: 1rem 0rem;
+      }
+      button {
+        margin: 2rem 0.5rem 2rem 0.5rem;
+        padding: 0.8rem 1.5rem;
+        border: none;
+        border-radius: 0.6rem;
+        cursor: pointer;
+        font-weight: 600;
+        flex-wrap: wrap;
+        @include mixin.tablet {
+          flex-wrap: wrap;
+          margin: 0.2rem;
+        }
+      }
+      .ubah {
+        background-color: white;
+        color: mixin.$neutral-900;
+        width: 50%;
+        border: 1px solid mixin.$neutral-400;
+      }
+      .masuk {
+        background-color: mixin.$primary-button;
+        color: white;
+        width: 50%;
+      }
+      .ubah,
+      .masuk {
+        @include mixin.tablet {
+          width: 100%;
+        }
+      }
+    }
+  }
+}

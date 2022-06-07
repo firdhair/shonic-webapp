@@ -3,7 +3,7 @@ const initialState = {
     email:'',
     password:'',
     loading: false,
-    error: ''
+    emailStatus: true
 }
 
 export default function reducer(state = initialState, action) {
@@ -26,7 +26,14 @@ export default function reducer(state = initialState, action) {
             console.log("check-email success")
             return {
                 ...state, 
-                email: payload
+                email: payload,
+                emailStatus: true
+            }
+        case 'check-email/failed':
+            console.log("check-email failed")
+            return {
+                ...state,
+                emailStatus: false
             }
         default:
             return state

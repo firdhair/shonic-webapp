@@ -64,23 +64,21 @@ const registAccountAsync = (email, fullname, password, history) => {
 const checkEmailAsync = (email, history) => {
   //let history = useNavigate()
   return(dispatch, getState, baseUrl) => {
-    console.log(email, typeof email, history)
+    console.log(email, typeof email)
   
     axios.post(`https://shonic-test.herokuapp.com/api/v1/otp/send`, {
-      email: `"${email}"`,
+      "email": `${email}`,
     }
     ).then((response) => {
       console.log("response data email: ", response.data)
       console.log("status: ", response.status)
-      if(response.status === 200){
-        //console.log("email sudah terdaftar")
+        console.log("email sudah terdaftar")
+        //dispatch(checkEmailFailed)
         dispatch(checkEmailSucces(email))
-        history('/verifikasi')
-      } else {
-        console.log("terdapat kesalahan")
-      }
+        history('/verifikasi')   
     }).catch((error) => {
       console.log("error email: ", error)
+      dispatch(checkEmailFailed)
     });
   }
 }
@@ -92,6 +90,10 @@ const checkEmailSucces = (payload) => (
     payload
   }
 );
+
+const checkEmailFailed = {
+    type: 'check-email/failed',
+}
 
 const otpVerifAsync = (email, otp, history) => {
   console.log("ini payload otp verif", email)
