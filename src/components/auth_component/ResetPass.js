@@ -4,7 +4,7 @@ import styles from './ResetPass.module.scss';
 import { LeftButton } from '../../images/icons/ShonicIcon';
 // router
 import { Link } from 'react-router-dom';
-import {useNavigate } from "react-router-dom"
+import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 
 const ResetPass = () => {
@@ -12,16 +12,14 @@ const ResetPass = () => {
   const [email, setEmail] = useState('');
   const [errorEmail, setErrorEmail] = useState('');
   const [validEmail, setValidEmail] = useState(false);
-  
-  let history = useNavigate()
 
-  //email validator (regex) function
+  let history = useNavigate();
+
   const validation = (e) => {
     let isValid = true;
     let emailInput = e.target.parentNode.childNodes[0].childNodes[1];
     // eslint-disable-next-line no-useless-escape
     const regex = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
-    //help me create 3 condition while email is valid, invalid, empty
     if (email === '') {
       setErrorEmail('Email tidak boleh kosong');
       emailInput.style.cssText = 'border:1px solid red';
@@ -39,18 +37,17 @@ const ResetPass = () => {
       setValidEmail(true);
     }
     return isValid;
-  }; //end of validation function
+  };
 
-  //handle submit validation
   const onSubmit = (e) => {
     e.preventDefault();
-    console.log('lalala')
+    console.log('lalala');
     /* let emailInput = e.target.parentNode.childNodes[0].childNodes[1]; */
     if (validation(e)) {
       /* missing dispatch  */
       setErrorEmail('');
-      console.log("help this is reset pass")
-      history('/resetpass_verif')
+      console.log('help this is reset pass');
+      history('/resetpass_verif');
     }
   };
   return (
@@ -78,7 +75,7 @@ const ResetPass = () => {
                 placeholder="Contoh: user@gmail.com"
                 name="email"
               />
-               <span className={`${styles.span} regular-12`}>{errorEmail}</span>
+              <span className={`${styles.span} regular-12`}>{errorEmail}</span>
             </div>
 
             <button className={`${styles.button} semibold-16`} onClick={onSubmit}>
