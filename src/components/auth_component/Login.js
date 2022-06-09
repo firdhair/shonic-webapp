@@ -113,7 +113,7 @@ const Login = () => {
           </button>
           {/* DAFTAR */}
           <p className={`${styles.daftar} medium-14`}>
-            belum punya akun?
+            Belum punya akun?
             <span> </span>
             <Link to="/register" className={styles.link}>
               daftar

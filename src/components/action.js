@@ -1,8 +1,8 @@
 import axios from 'axios'
 import React from 'react'
 
-const fetchPostStart = {
-    type: 'fetch-start'
+const fetchRefreshState = {
+    type: 'fetch-refresh'
 }
 
 const loginActionAsync = (email, password, history) => {
@@ -67,10 +67,10 @@ const checkEmailAsync = (email, history) => {
     ).then((response) => {
       console.log("response data email: ", response.data)
       console.log("status: ", response.status)
-        console.log("email sudah terdaftar")
         dispatch(checkEmailSucces(email))
         history('/verifikasi')   
     }).catch((error) => {
+      console.log("email sudah terdaftar")
       console.log("error email: ", error)
       dispatch(checkEmailFailed)
     });
@@ -97,15 +97,25 @@ const otpVerifAsync = (email, otp, history) => {
       otp: otp
     }).then((response)=> {
       console.log("response otp verif", response)
+      dispatch(otpVerifSuccess)
       history('/lengkapi_pendaftaran')
     }).catch((error)=> {
       console.log("error: ", error)
+      dispatch(otpVerifFail)
     })
   }
 }
 
+const otpVerifSuccess = {
+  type: 'otp-verif/success'
+}
+
+const otpVerifFail = {
+  type: 'otp-verif/fail'
+}
+
 export{
-    fetchPostStart,
+    fetchRefreshState,
     loginActionAsync,
     registAccountAsync,
     checkEmailAsync,

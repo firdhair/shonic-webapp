@@ -2,14 +2,12 @@
 import style from './PopUp.module.scss';
 //react router
 import { Link } from 'react-router-dom';
-import {useNavigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 // necessary dependencies
-import { useDispatch, useSelector } from 'react-redux';
-import { checkEmailAsync } from '../action';
-import { useState } from 'react';
 import Popup from 'reactjs-popup'
 
 const PopUp = ({open,  onClose, email}) => {
+    const navigate = useNavigate()
     return(
     <Popup open={open} closeOnDocumentClick onClose={onClose}>
      <div className={style.modal}>
@@ -21,7 +19,9 @@ const PopUp = ({open,  onClose, email}) => {
            <p>Lanjut masuk dengan email {email}?</p>
            <div className={style.choices}>
                <button className={style.ubah} onClick={onClose}>Ubah Email</button>
-               <button className={style.masuk}>Ya, Masuk</button>
+              
+                 <button className={style.masuk} onClick={()=>navigate("/login")}>Ya, Masuk</button>
+                
            </div>
        </div>
      </div>
