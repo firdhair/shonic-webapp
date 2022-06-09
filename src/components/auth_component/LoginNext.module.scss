@@ -1,4 +1,4 @@
-@use "../../mixin.scss" as mixin;
+@use '../../mixin.scss' as mixin;
 
 .outer {
   width: 100%;
@@ -87,6 +87,21 @@
   margin-block: 42px;
   & > * {
     color: mixin.$primary-text;
+  }
+}
+
+.flexinput {
+  position: relative;
+  .password {
+    position: absolute;
+    top: 50%;
+    right: 0;
+
+    border: none;
+    background: none;
+    height: 100%;
+    transform: translateY(-50%);
+    padding-inline: 12px;
   }
 }
 
