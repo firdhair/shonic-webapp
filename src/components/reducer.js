@@ -5,11 +5,13 @@ const initialState = {
     emailStatus: true,
     verifAcc: undefined,
     verifPass: undefined,
-    tokenPass: ''
+    tokenPass: '',
+    error: '',
+    status: true,
 }
 
 export default function reducer(state = initialState, action) {
-    const { type, payload } = action
+  const { type, payload } = action;
 
     switch(type){
         case 'fetch-refresh':
@@ -72,8 +74,20 @@ export default function reducer(state = initialState, action) {
                 ...state,
                 password: payload
             }
-        
+        case 'LOG_SUCCESS':
+          console.log('ini test redux LOG_SUCCESS');
+          return {
+            ...state,
+            status: true,
+          };
+        case 'LOG_FAILED':
+          console.log('ini test redux LOG_FAILED');
+          return {
+            ...state,
+            status: false,
+          };
         default:
             return state
     }
 }
+

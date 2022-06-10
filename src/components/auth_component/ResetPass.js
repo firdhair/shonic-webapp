@@ -23,13 +23,13 @@ const ResetPass = () => {
       dispatch(fetchRefreshState)
   }, [])
 
-  //email validator (regex) function
+  let history = useNavigate();
+
   const validation = (e) => {
     let isValid = true;
     let emailInput = e.target.parentNode.childNodes[0].childNodes[1];
     // eslint-disable-next-line no-useless-escape
     const regex = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
-    //help me create 3 condition while email is valid, invalid, empty
     if (email === '') {
       setErrorEmail('Email tidak boleh kosong');
       emailInput.style.cssText = 'border:1px solid red';
@@ -47,9 +47,8 @@ const ResetPass = () => {
       setValidEmail(true);
     }
     return isValid;
-  }; //end of validation function
+  };
 
-  //handle submit validation
   const onSubmit = (e) => {
     e.preventDefault();
     /* let emailInput = e.target.parentNode.childNodes[0].childNodes[1]; */
@@ -91,7 +90,7 @@ const ResetPass = () => {
                 placeholder="Contoh: user@gmail.com"
                 name="email"
               />
-               <span className={`${styles.span} regular-12`}>{errorEmail}</span>
+              <span className={`${styles.span} regular-12`}>{errorEmail}</span>
             </div>
 
             <button className={`${styles.button} semibold-16`} onClick={onSubmit}>

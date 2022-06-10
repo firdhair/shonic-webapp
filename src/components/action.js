@@ -1,89 +1,154 @@
-import axios from 'axios'
+import axios from 'axios';
 
-const fetchRefreshState = {
-    type: 'fetch-refresh'
-}
+const fetchPostStart = {
+  type: 'fetch-start',
+};
+const logSucess = () => {
+  return {
+    type: 'LOG_SUCCESS',
+  };
+};
+const LogFailed = () => {
+  return {
+    type: 'LOG_FAILED',
+  };
+};
 
 
 //////////////////// LOGIN ACTION ////////////////////
 const loginActionAsync = (email, password, history) => {
-  console.log("help this is login", email, password)
+  console.log('help this is login', email, password);
   return (dispatch, getState, baseUrl) => {
     // baseUrl/users/authenticate
-    axios.post(`${baseUrl}/api/v1/auth/login`, {
-      email,
-      password
-    }).then((response) => {
-      console.log("response data: ", response.data)
-      const token = response.data.token
-      const storage = window.localStorage
-      storage.setItem('token', token)
-      dispatch(loginActionSuccess({ email, password }));
-      history('/home')
-    }).catch((error) => {
-      console.log("error: ", error)
-    });
-  }
-}
+    axios
+      .post(`${baseUrl}/api/v1/auth/login`, {
+        email,
+        password,
+      })
+      .then((response) => {
+        console.log('response data: ', response.data);
+        const token = response.data.token;
+        const storage = window.localStorage;
+        storage.setItem('token', token);
+        dispatch(loginActionSuccess({ email, password }));
+        history('/home');
+        console.log(response.status);
+        console.log('========sucess==============');
+        dispatch(logSucess());
+      })
+      .catch((error) => {
+        console.log('=========error========== ', error);
+        dispatch(LogFailed());
+      });
+  };
+};
 
 const loginActionSuccess = (payload) => (
-  console.log("payload: ", payload),
+  console.log('payload: ', payload),
   {
     type: 'login/success',
     status: 'success',
-    payload
+    payload,
   }
 );
 
-
-//////////////////// REGIST ACTION ////////////////////
 const registAccountAsync = (email, fullname, password, history) => {
- //console.log("email:", email, "fullname: ", fullname, "password: ", password)
-  
- return (dispatch, getState, baseUrl) => {
-    axios.post(`${baseUrl}/api/v1/auth/register`, {
-      email,
-      fullname,
-      password
-    },{
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    }).then((response) => {
-      console.log("response data: ", response.data)
-      console.log("berhasil regist!")
-      history('/login')
-    }).catch((error) => {
-      console.log("error", error)
-    });
-  }
-}
+  console.log('email:', email, 'fullname: ', fullname, 'password: ', password);
+
+  return (dispatch, getState, baseUrl) => {
+    // baseUrl/users/authenticate
+    //console.log("ini regist account")
+    axios
+      .post(
+        `${baseUrl}/api/v1/auth/register`,
+        {
+          email,
+          fullname,
+          password,
+        },
+        {
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        }
+      )
+      .then((response) => {
+        console.log('response data: ', response.data);
+        console.log('berhasil regist!');
+        history('/login');
+        //dispatch(checkEmail(email))
+        //dispatch(loginActionSuccess({ username, password }));
+      })
+      .catch((error) => {
+        console.log('error', error);
+      });
+  };
+};
+
+//create registAccountAsync with loading, error, and success reducer
+const registAccountAsyncWithLoading = (email, fullname, password, history) => {
+  //adding loading error sucess dispatch
+  return (dispatch, getState, baseUrl) => {
+    dispatch(fetchPostStart);
+    axios
+      .post(
+        `${baseUrl}/api/v1/auth/register`,
+        {
+          email,
+          fullname,
+          password,
+        },
+        {
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        }
+      )
+      .then((response) => {
+        console.log('response data: ', response.data);
+        console.log('berhasil regist!');
+        history('/login');
+        //dispatch(checkEmail(email))
+        //dispatch(loginActionSuccess({ username, password }));
+        dispatch(loginActionSuccess({ email, password }));
+      })
+      .catch((error) => {
+        console.log('error', error);
+      });
+  };
+};
 
 const checkEmailAsync = (email, history) => {
-  return(dispatch, getState, baseUrl) => {
-    console.log(email, typeof email)
-  
-    axios.post(`https://shonic-test.herokuapp.com/api/v1/otp/send`, {
-      "email": `${email}`,
-    }
-    ).then((response) => {
-      console.log("response data email: ", response.data)
-      console.log("status: ", response.status)
-      dispatch(checkEmailSucces(email))
-      history('/verifikasi')   
-    }).catch((error) => {
-      console.log("email sudah terdaftar")
-      console.log("error email: ", error)
-      dispatch(checkEmailFailed)
-    });
-  }
-}
+  //let history = useNavigate()
+  return (dispatch, getState, baseUrl) => {
+    console.log(email, typeof email, history);
+
+    axios
+      .post(`https://shonic-test.herokuapp.com/api/v1/otp/send`, {
+        email: `"${email}"`,
+      })
+      .then((response) => {
+        console.log('response data email: ', response.data);
+        console.log('status: ', response.status);
+        if (response.status === 200) {
+          //console.log("email sudah terdaftar")
+          dispatch(checkEmailSucces(email));
+          history('/verifikasi');
+        } else {
+          console.log('terdapat kesalahan');
+        }
+      })
+      .catch((error) => {
+        console.log('error email: ', error);
+      });
+  };
+};
 
 const checkEmailSucces = (payload) => (
-  console.log("payload email success: ", payload),
+  console.log('payload email success: ', payload),
   {
     type: 'check-email/success',
-    payload
+    payload,
   }
 );
 
@@ -94,20 +159,27 @@ const checkEmailFailed = {
 
 //////////////////// OTP VERIF CREATE ACCOUNT ACTION ////////////////////
 const otpVerifAsync = (email, otp, history) => {
-  console.log("ini payload otp verif", email)
-  return(dispatch, getState, baseUrl) => {
-    axios.post(`${baseUrl}/api/v1/otp/validate`, {
-      email, otp
-    }).then((response)=> {
-      console.log("response otp verif", response)
-      dispatch(otpVerifSuccess)
-      history('/lengkapi_pendaftaran')
-    }).catch((error)=> {
-      console.log("error: ", error)
-      dispatch(otpVerifFail)
-    })
-  }
-}
+  console.log('ini payload otp verif', email);
+  return (dispatch, getState, baseUrl) => {
+    axios
+      .post(`${baseUrl}/api/v1/otp/validate`, {
+         email, otp
+      })
+      .then((response) => {
+        console.log('response otp verif', response);
+        history('/lengkapi_pendaftaran');
+        console.log('=========BERHASIL VERIF ===========');
+        dispatch(otpVerifSuccess)
+        dispatch(logSucess());
+      })
+      .catch((error) => {
+        console.log('error: ', error);
+        console.log('=========GAGAL VERIF SALAH KODE  ===========');
+        dispatch(otpVerifFail)
+        dispatch(LogFailed());
+      });
+  };
+};
 
 const otpVerifSuccess = {
   type: 'otp-verif/success'
