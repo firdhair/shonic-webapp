@@ -1,6 +1,5 @@
 //css
 import styles from './Verif.module.scss';
-<<<<<<< HEAD
 import { LeftButton } from '../../images/icons/ShonicIcon';
 import Alert from "react-bootstrap/Alert";
 //react router
@@ -35,30 +34,6 @@ const Verif = () => {
     console.log("resend code")
     dispatch(checkEmailAsync(email, history))
   }
-=======
-import { DangerButton, LeftButton } from '../../images/icons/ShonicIcon';
-//react router
-import { Link } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
-import { useState } from 'react';
-import { otpVerifAsync } from '../action';
-
-const Verif = () => {
-  const { email, status } = useSelector((state) => state);
-  const [otp, setOtp] = useState();
-
-  const dispatch = useDispatch();
-  let history = useNavigate();
-
-  console.log('email verif: ', email);
-  const onVerification = (e) => {
-    e.preventDefault();
-    console.log('otp', otp, 'email', email);
-    dispatch(otpVerifAsync(email, otp, history));
-    //history('/lengkapi_pendaftaran')
-  };
->>>>>>> origin/forgot_password
 
   return (
     <div className={styles.outer}>
@@ -82,12 +57,12 @@ const Verif = () => {
             Kode berhasil dikirim melalui email <span>{email}</span>, periksa dan masukkan kode disini untuk dapat membuat akun baru
           </p>
           {/* VERIF EROR CONDITIONAL */}
-          {status === true ? null : (
+          {/* {status === true ? null : (
             <div className={styles.danger}>
               <DangerButton />
               Kode yang Anda masukkan salah
             </div>
-          )}
+          )} */}
 
           <form className={styles.form}>
             <input className={`${styles.input} regular-14`} type="text" name="text" value={otp} onChange={(e) => setOtp(e.target.value)} />

@@ -1,7 +1,7 @@
 import axios from 'axios';
 
-const fetchPostStart = {
-  type: 'fetch-start',
+const fetchRefreshState = {
+  type: 'fetch-refresh',
 };
 const logSucess = () => {
   return {
@@ -89,7 +89,7 @@ const registAccountAsync = (email, fullname, password, history) => {
 const registAccountAsyncWithLoading = (email, fullname, password, history) => {
   //adding loading error sucess dispatch
   return (dispatch, getState, baseUrl) => {
-    dispatch(fetchPostStart);
+    dispatch(fetchRefreshState);
     axios
       .post(
         `${baseUrl}/api/v1/auth/register`,

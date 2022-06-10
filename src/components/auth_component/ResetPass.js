@@ -23,8 +23,6 @@ const ResetPass = () => {
       dispatch(fetchRefreshState)
   }, [])
 
-  let history = useNavigate();
-
   const validation = (e) => {
     let isValid = true;
     let emailInput = e.target.parentNode.childNodes[0].childNodes[1];

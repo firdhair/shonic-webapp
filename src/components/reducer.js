@@ -19,7 +19,8 @@ export default function reducer(state = initialState, action) {
             return {
                 ...state,
                 emailStatus: true,
-                verifAcc: true
+                verifAcc: true,
+                status: true
                 // loading:true
             }
         case 'login/success':

@@ -8,8 +8,8 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useHistory } from 'react-router-dom';
 // necessary dependencies
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchPostStart, loginActionAsync } from '../action';
-import { useState } from 'react';
+import { fetchPostStart, loginActionAsync, fetchRefreshState } from '../action';
+import { useState, useEffect } from 'react';
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -21,6 +21,12 @@ const Login = () => {
   let history = useNavigate();
 
   const { status } = useSelector((state) => state);
+
+   useEffect(()=> {
+      // refresh verifAcc & emailStatus state value
+      dispatch(fetchRefreshState)
+  }, [])
+
   const togglePasswordType = (e) => {
     e.preventDefault();
     if (passwordType === 'password') {
