@@ -3,7 +3,9 @@ const initialState = {
     password:'',
     loading: false,
     emailStatus: true,
-    verifAcc: true
+    verifAcc: undefined,
+    verifPass: undefined,
+    tokenPass: ''
 }
 
 export default function reducer(state = initialState, action) {
@@ -50,6 +52,25 @@ export default function reducer(state = initialState, action) {
             return {
                 ...state,
                 verifAcc: false
+            }
+        case 'otp-verif-forgotPass/success':
+            console.log("verifikasi akun sukses")
+            return {
+                ...state,
+                verifPass: true,
+                tokenPass: payload
+            }
+        case 'otp-verif-forgotPass/fail':
+            console.log("verifikasi akun gagal")
+            return {
+                ...state,
+                verifPass: false
+            }
+        case 'create-new-pass/success':
+            console.log("password berhasil diganti")
+            return {
+                ...state,
+                password: payload
             }
         
         default:

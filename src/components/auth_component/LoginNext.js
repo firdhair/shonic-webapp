@@ -53,7 +53,7 @@ const LoginNext = () => {
             <Link to="/verifikasi">
                <LeftButton className={styles.left} />
             </Link>
-            <h3 className={`${styles.h3} bold-32`}>Lengkapi Pendaftaran</h3>
+            <h3 className={`${styles.h3} semibold-25`}>Lengkapi Pendaftaran</h3>
           </div>
           <p className={`${styles.syarat} medium-12`}>
             Kode berhasil dikirim melalui email <span>shonic@gmail.com</span>, periksa dan masukkan kode disini untuk dapat membuat akun baru

@@ -8,7 +8,7 @@ import react from "react";
 import { useSelector, useDispatch } from "react-redux";
 import {useNavigate } from "react-router-dom"
 import { useState, useEffect } from 'react';
-import { otpVerifAsync, fetchRefreshState } from '../action';
+import { otpVerifAsync, fetchRefreshState, checkEmailAsync } from '../action';
 
 const Verif = () => {
   const { email, verifAcc} = useSelector((state) => state);
@@ -25,8 +25,14 @@ const Verif = () => {
 
   const onVerification = (e) => {
     e.preventDefault();
-    console.log("otp", otp, "email", email)
-    dispatch(otpVerifAsync(email, otp, history))
+    let otp2 = Number(otp)
+    console.log("otp", otp2, typeof otp2, "email", email)
+    dispatch(otpVerifAsync(email, otp2, history))
+  }
+
+  const onResendCode = (e) => {
+    console.log("resend code")
+    dispatch(checkEmailAsync(email, history))
   }
 
   return (
@@ -38,7 +44,7 @@ const Verif = () => {
             <Link to="/register">
                <LeftButton className={styles.left} />
             </Link>
-            <h3 className={`${styles.h3} bold-32`}>Verifikasi akun</h3>
+            <h3 className={`${styles.h3} semibold-25`}>Verifikasi akun</h3>
           </div>
               {verifAcc === false ? 
                 <>
@@ -59,11 +65,7 @@ const Verif = () => {
 
           {/* DAFTAR */}
           <p className={`${styles.daftar} medium-14`}>
-            Tidak menerima kode verifikasi?
-            <span> </span>
-            <Link to="/" className={styles.link}>
-              Kirim Ulang
-            </Link>
+            Tidak menerima kode verifikasi?  <span  onClick={onResendCode}> Kirim Ulang</span>
           </p>
         </div>
       </div>

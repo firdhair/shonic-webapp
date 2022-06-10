@@ -37,7 +37,6 @@ const Register = () => {
     console.log("ini handleSubmit register")
     console.log(e.target.parentNode.childNodes[0].childNodes[1])
 
-
     if(validation(e)){
         dispatch(checkEmailAsync(email, history))
         setErrorEmail("")
@@ -87,12 +86,8 @@ const Register = () => {
               <span> Syarat dan Ketentuan</span> serta
               <span> Kebijakan Privasi</span>
             </p>
-            <button className={`${styles.button} semibold-16`} onClick={onSubmit}>Daftar</button>
-             
+            <button className={`${styles.button} semibold-16`} onClick={onSubmit}>Daftar</button> 
           </form>  
-           {/* <button type="button" className={style.button} onClick={() =>setOpen(o => !o)}>Popup</button>
-          <PopUp open={open} email={email} onClose={closeModal}/> */}
-            
             
             {emailStatus !== true ? 
            <>
@@ -101,14 +96,6 @@ const Register = () => {
            </> : null
           }
           
-           {/* {emailStatus === false && open === false? 
-           <>
-           <p>email salah</p>
-           <p>{open}</p>
-             <PopUp open={open} email={email} onClose={closeModal}/>
-           </>  */}
-           
-          {/* Aatau */}
           <div className={`${styles.accent} semibold-16`}>
             <div className={styles.strip}></div>
             <p className={`${styles.p} regular-14`}>atau</p>

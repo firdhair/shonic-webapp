@@ -193,9 +193,10 @@
   color: mixin.$neutral-900;
   // margin: 24px 0 64px 0;
   margin-top: 24px;
-  .link {
+  span {
     text-decoration: none;
     color: mixin.$primary-button;
     text-transform: capitalize;
+    cursor: pointer;
   }
 }
