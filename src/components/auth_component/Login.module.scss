@@ -1,4 +1,4 @@
-@use "../../mixin.scss" as mixin;
+@use '../../mixin.scss' as mixin;
 
 .outer {
   width: 100%;
@@ -69,6 +69,39 @@
   }
 }
 
+.danger {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  padding-block: 8px;
+  margin-top: 24px;
+  border: 1px solid mixin.$secondary-danger;
+  border-radius: 8px;
+  color: mixin.$secondary-danger;
+  background-color: mixin.$secondary-danger-light;
+  text-align: center;
+  font-size: 12px;
+  font-weight: 500;
+  margin-top: 8px;
+  @include mixin.desktop {
+    margin-top: 42px;
+  }
+}
+.flexinput {
+  position: relative;
+  .password {
+    position: absolute;
+    top: 50%;
+    right: 0;
+
+    border: none;
+    background: none;
+    height: 100%;
+    transform: translateY(-50%);
+    padding-inline: 12px;
+  }
+}
 .form {
   margin-top: 24px;
   .div {
@@ -166,7 +199,7 @@
 
 .daftar {
   text-align: center;
-  text-transform: lowercase;
+  //text-transform: lowercase;
   color: mixin.$neutral-900;
   margin-top: 24px;
   .link {

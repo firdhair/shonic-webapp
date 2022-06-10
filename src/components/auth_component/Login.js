@@ -1,28 +1,47 @@
 //Pic
 import { LoginPic } from '../../images/pictures/LoginPic';
-import { GoogleIcon } from '../../images/icons/ShonicIcon';
+import { DangerButton, EyeClosed, EyeOpen, GoogleIcon } from '../../images/icons/ShonicIcon';
 //css
 import styles from './Login.module.scss';
 //react router
 import { Link, useNavigate } from 'react-router-dom';
-import {useHistory } from "react-router-dom"
+import { useHistory } from 'react-router-dom';
 // necessary dependencies
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchPostStart, loginActionAsync } from '../action';
-import { useState } from 'react';
+import { fetchPostStart, loginActionAsync, fetchRefreshState } from '../action';
+import { useState, useEffect } from 'react';
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [errorEmail, setErrorEmail] = useState('');
   const [errorPass, setErrorPass] = useState('');
+  const [passwordType, setPasswordType] = useState('password');
   const dispatch = useDispatch();
-  let history = useNavigate()
+  let history = useNavigate();
+
+  const { status } = useSelector((state) => state);
+
+   useEffect(()=> {
+      // refresh verifAcc & emailStatus state value
+      dispatch(fetchRefreshState)
+  }, [])
+
+  const togglePasswordType = (e) => {
+    e.preventDefault();
+    if (passwordType === 'password') {
+      setPasswordType('text');
+    } else {
+      setPasswordType('password');
+    }
+    console.log('PASSWORD TOGGLE CLICKEDDDDDDDDDDD');
+  };
 
   const validation = (e) => {
     let isValid = true;
     let emailInput = e.target.parentNode.childNodes[0].childNodes[1];
     let passInput = e.target.parentNode.childNodes[1].childNodes[1];
+    // eslint-disable-next-line no-useless-escape
     const regex = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
     const regularExpression = /^(?=.*[0-6])[a-zA-Z0-9!@#$%^&*]{6,16}$/;
 
@@ -62,9 +81,10 @@ const Login = () => {
         console.log('yay lolos');
         setErrorEmail('');
         setErrorPass('');
-        history("/")
+        status(true);
+        //history('/');
       } catch (e) {
-        console.log("e", e)
+        console.log('e', e);
       }
     }
   };
@@ -77,7 +97,13 @@ const Login = () => {
         </div>
         {/* LOGIN FORM */}
         <div className={styles.flexbottom}>
-          <h3 className={`${styles.h3} bold-32`}>masuk</h3>
+          <h3 className={`${styles.h3} bold-24`}>masuk</h3>
+          {status === true ? null : (
+            <div className={styles.danger}>
+              <DangerButton />
+              Email dan/atau password Anda salah
+            </div>
+          )}
           <form className={styles.form}>
             <div className={styles.div}>
               <label className={`${styles.label} medium-14`}>email</label>
@@ -86,7 +112,12 @@ const Login = () => {
             </div>
             <div className={styles.div}>
               <label className={`${styles.label} medium-14`}>password</label>
-              <input className={`${styles.input} regular-14`} type="password" placeholder="masukkan password" name="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+              <div className={styles.flexinput}>
+                <input className={`${styles.input} regular-14`} type={passwordType} placeholder="masukkan password" name="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+                <button className={styles.password} onClick={togglePasswordType}>
+                  {passwordType === 'password' ? <EyeClosed /> : <EyeOpen />}
+                </button>
+              </div>
               <span className={`${styles.span} regular-12`}>{errorPass}</span>
             </div>
             <p className={`${styles.forgotPassword} medium-12`}>
@@ -113,7 +144,7 @@ const Login = () => {
           </button>
           {/* DAFTAR */}
           <p className={`${styles.daftar} medium-14`}>
-            belum punya akun?
+            Belum punya akun?
             <span> </span>
             <Link to="/register" className={styles.link}>
               daftar

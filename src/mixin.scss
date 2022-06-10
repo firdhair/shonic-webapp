@@ -59,7 +59,28 @@ $shadow-elevation-6: 0px 2px 8px rgba(40, 41, 61, 0.08),
 
 // Desktop Media Query : 360 x 800
 @mixin desktop {
-  @media only screen and (min-width: 1440px) {
+  @media only screen and (min-width: 1000px) {
+    @content;
+  }
+}
+
+/////////////////////////////////////////
+@mixin mobile2 {
+  @media only screen and (max-width: 360px) {
+    @content;
+  }
+}
+
+// Tablet Media Query : 768 x 1024
+@mixin tablet2 {
+  @media only screen and (max-width: 768px) {
+    @content;
+  }
+}
+
+// Desktop Media Query : 360 x 800
+@mixin desktop2 {
+  @media only screen and (min-width: 1400px) {
     @content;
   }
 }

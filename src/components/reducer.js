@@ -1,20 +1,27 @@
-import { Redirect, Route } from "react-router";
 const initialState = {
     email:'',
     password:'',
     loading: false,
-    error: ''
+    emailStatus: true,
+    verifAcc: undefined,
+    verifPass: undefined,
+    tokenPass: '',
+    error: '',
+    status: true,
 }
 
 export default function reducer(state = initialState, action) {
-    const { type, payload } = action
+  const { type, payload } = action;
 
     switch(type){
-        case 'fetch-start':
+        case 'fetch-refresh':
             console.log("ini test redux fetch-start")
             return {
                 ...state,
-                loading:true
+                emailStatus: true,
+                verifAcc: true,
+                status: true
+                // loading:true
             }
         case 'login/success':
             console.log("login success")
@@ -26,9 +33,62 @@ export default function reducer(state = initialState, action) {
             console.log("check-email success")
             return {
                 ...state, 
-                email: payload
+                email: payload,
+                emailStatus: true,
+                // verifAcc: true
             }
+        case 'check-email/failed':
+            console.log("check-email failed")
+            return {
+                ...state,
+                emailStatus: false,
+                // verifAcc: false
+            }
+        case 'otp-verif/success':
+            console.log("verifikasi akun sukses")
+            return {
+                ...state,
+                verifAcc: true
+            }
+        case 'otp-verif/fail':
+            console.log("verifikasi akun gagal")
+            return {
+                ...state,
+                verifAcc: false
+            }
+        case 'otp-verif-forgotPass/success':
+            console.log("verifikasi akun sukses")
+            return {
+                ...state,
+                verifPass: true,
+                tokenPass: payload
+            }
+        case 'otp-verif-forgotPass/fail':
+            console.log("verifikasi akun gagal")
+            return {
+                ...state,
+                verifPass: false
+            }
+        case 'create-new-pass/success':
+            console.log("password berhasil diganti")
+            return {
+                ...state,
+                password: payload
+            }
+        case 'LOG_SUCCESS':
+          console.log('ini test redux LOG_SUCCESS');
+          return {
+            ...state,
+            status: true,
+          };
+        case 'LOG_FAILED':
+          console.log('ini test redux LOG_FAILED');
+          return {
+            ...state,
+            status: false,
+          };
         default:
             return state
     }
 }
+

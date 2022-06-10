@@ -4,31 +4,37 @@ import styles from './ResetPass.module.scss';
 import { LeftButton } from '../../images/icons/ShonicIcon';
 // router
 import { Link } from 'react-router-dom';
-import {useNavigate } from "react-router-dom"
-import { useState } from 'react';
+import { useNavigate } from "react-router-dom"
+import { useDispatch, useSelector } from 'react-redux';
+import { useState, useEffect } from 'react';
+import { fetchRefreshState, checkEmailForgotPass } from '../action';
 
 const ResetPass = () => {
   //set state for validation
   const [email, setEmail] = useState('');
   const [errorEmail, setErrorEmail] = useState('');
   const [validEmail, setValidEmail] = useState(false);
+  const { emailStatus } = useSelector((state) => state);
   
-  let history = useNavigate()
+  const history = useNavigate()
+  const dispatch = useDispatch()
 
-  //email validator (regex) function
+  useEffect(()=> {
+      dispatch(fetchRefreshState)
+  }, [])
+
   const validation = (e) => {
     let isValid = true;
     let emailInput = e.target.parentNode.childNodes[0].childNodes[1];
     // eslint-disable-next-line no-useless-escape
     const regex = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
-    //help me create 3 condition while email is valid, invalid, empty
     if (email === '') {
       setErrorEmail('Email tidak boleh kosong');
       emailInput.style.cssText = 'border:1px solid red';
       isValid = false;
       setValidEmail(false);
     } else if (regex.test(email) === false) {
-      setErrorEmail('Format email tidak valid');
+      setErrorEmail('Format email tidak valid, contoh: shonic@gmail.com');
       emailInput.style.cssText = 'border:1px solid red';
       isValid = false;
       setValidEmail(false);
@@ -39,20 +45,19 @@ const ResetPass = () => {
       setValidEmail(true);
     }
     return isValid;
-  }; //end of validation function
+  };
 
-  //handle submit validation
   const onSubmit = (e) => {
     e.preventDefault();
-    console.log('lalala')
     /* let emailInput = e.target.parentNode.childNodes[0].childNodes[1]; */
     if (validation(e)) {
-      /* missing dispatch  */
       setErrorEmail('');
       console.log("help this is reset pass")
-      history('/resetpass_verif')
+      dispatch(checkEmailForgotPass(email, history))
+      // history('/resetpass_verif')
     }
   };
+  
   return (
     <div className={styles.outer}>
       <div className={`${styles.flexcontainer} container`}>
@@ -62,8 +67,13 @@ const ResetPass = () => {
             <Link to="/login">
               <LeftButton className={styles.left} />
             </Link>
-            <h3 className={`${styles.h3} bold-32`}>Ganti password</h3>
+            <h3 className={`${styles.h3} semibold-25`}>Ganti password</h3>
           </div>
+           {emailStatus !== true ? 
+           <>
+           <p>Tidak ada akun dengan email tersebut </p>
+           </> : null
+          }
           <p className={`${styles.syarat} medium-12`}>Masukkan email yang terdaftar pada akun Shonic untuk mengatur ulang password Anda </p>
 
           <form className={styles.form}>
@@ -78,7 +88,7 @@ const ResetPass = () => {
                 placeholder="Contoh: user@gmail.com"
                 name="email"
               />
-               <span className={`${styles.span} regular-12`}>{errorEmail}</span>
+              <span className={`${styles.span} regular-12`}>{errorEmail}</span>
             </div>
 
             <button className={`${styles.button} semibold-16`} onClick={onSubmit}>

@@ -22,16 +22,16 @@ function App() {
     <>
       <NavAuth />
       <Routes>
-          <Route index element={<Login />}></Route>
+          {/* <Route index element={<Login />}></Route> */}
           <Route element={<ProtectedRoute/>}>
-              <Route path="/home" element={<Home />}/>
+              <Route path="/" element={<Home />}/>
           </Route>
           <Route path="login" element={<Login />}></Route>
           <Route path="register" element={<Register />}></Route>
           <Route path="resetpass" element={<ResetPass />}></Route>
+          <Route path="resetpass_verif" element={<ResetPassVerif />}></Route>
           <Route path="resetpass_next" element={<ResetPassNext />}></Route>
           <Route path="resetpass_done" element={<ResetPassDone />}></Route>
-          <Route path="resetpass_verif" element={<ResetPassVerif />}></Route>
           <Route path="verifikasi" element={<Veriffikasi />}></Route>
           <Route path="lengkapi_pendaftaran" element={<LengkapiPendaftaran />}></Route>
 
