@@ -1,0 +1,147 @@
+
+  //ceate conditional state for email regular expression
+/*   const [email, setEmail] = useState('');
+  const [emailValid, setEmailValid] = useState(false);
+  const [emailError, setEmailError] = useState('');
+  const [password, setPassword] = useState('');
+  const [passwordValid, setPasswordValid] = useState(false);
+  const [passwordError, setPasswordError] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const [confirmPasswordValid, setConfirmPasswordValid] = useState(false);
+  const [confirmPasswordError, setConfirmPasswordError] = useState('');
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
+  const dispatch = useDispatch();
+
+  const validation = (e) => {
+    let isValid = true;
+    let emailInput = e.target.parentNode.childNodes[0].childNodes[1];
+    let passInput = e.target.parentNode.childNodes[1].childNodes[1];
+    const regex = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+    const regularExpression = /^(?=.*[0-6])[a-zA-Z0-9!@#$%^&*]{6,16}$/;
+    
+    //write if else validation for email and password
+    if(email && regex.test(email) === true){
+      setEmailValid(true)
+      setEmailError("")
+      emailInput.style.cssText = 'border:1px solid #e0e0e0';
+    } else if(!email ||  regex.test(email) === false){
+      setEmailValid(false)
+      setEmailError("entered email is not valid")
+      emailInput.style.cssText = 'border:1px solid red';
+      isValid = false;
+    }
+    if(password && regularExpression.test(password) === true){
+      setPasswordValid(true)
+      setPasswordError("")
+      passInput.style.cssText = 'border:1px solid #e0e0e0';
+    }
+    else if(!password || regularExpression.test(password) === false){
+      setPasswordValid(false)
+      setPasswordError("entered password is not valid")
+      passInput.style.cssText = 'border:1px solid red';
+      isValid = false;
+    }
+    if(confirmPassword && confirmPassword === password){
+      setConfirmPasswordValid(true)
+      setConfirmPasswordError("")
+      passInput.style.cssText = 'border:1px solid #e0e0e0';
+    }
+    else if(!confirmPassword || confirmPassword !== password){
+      setConfirmPasswordValid(false)
+      setConfirmPasswordError("entered password is not valid")
+      passInput.style.cssText = 'border:1px solid red';
+      isValid = false;
+    }
+    return isValid;
+  }
+ */
+/*   return (
+    <div className={styles.resetPass}>
+      <div className={styles.resetPass__header}>
+        <LeftButton />
+        <h1>Reset Password</h1>
+      </div>
+      <div className={styles.resetPass__body}>
+        <div className={styles.resetPass__body__form}>
+          <div className={styles.resetPass__body__form__email}>
+            <label>Email</label>
+            <input type="email" placeholder="Enter your email" onChange={(e) => {
+              setEmail(e.target.value);
+              validation(e);
+            }
+            } />
+            {emailValid ? null : <p className={styles.resetPass__body__form__email__error}>{emailError}</p>}
+          </div>
+          <div className={styles.resetPass__body__form__password}>
+            <label>Password</label>
+            <input type="password" placeholder="Enter your password" onChange={(e) => {
+              setPassword(e.target.value);
+              validation(e);
+            }
+            } />
+            {passwordValid ? null : <p className={styles.resetPass__body__form__password__error}>{passwordError}</p>}
+          </div>
+          <div className={styles.resetPass__body__form__confirmPassword}>
+            <label>Confirm Password</label>
+            <input type="password" placeholder="Enter your password again" onChange={(e) => {
+              setConfirmPassword(e.target.value);
+              validation(e);
+            }
+            } />
+            {confirmPasswordValid ? null : <p className={styles.resetPass__body__form__confirmPassword__error}>{confirmPasswordError}</p>}
+          </div>
+          <div className={styles.resetPass__body__form__button}>
+            <button onClick={() => {
+              if(validation()){
+                setLoading(true);
+                setError("");
+                dispatch(resetPassword(email, password, confirmPassword))
+                .then(() => {
+                  setLoading(false);
+                  setEmail("");
+                  setPassword("");
+                  setConfirmPassword("");
+                  setEmailValid(false);
+                  setPasswordValid(false);
+                  setConfirmPasswordValid(false);
+                  setEmailError("");
+                  setPasswordError("");
+                  setConfirmPasswordError("");
+                }
+                )
+                .catch(() => {
+                  setLoading(false);
+                  setError("Something went wrong");
+                }
+                )
+              }
+            }
+            }>Reset Password</button>
+            {loading ? <div className={styles.resetPass__body__form__button__loading}>
+              <div className={styles.resetPass__body__form__button__loading__spinner}>
+                <Spinner />
+              </div>
+              <p>Please wait...</p>
+            </div> : null}
+            {error ? <p className={styles.resetPass__body__form__button__error}>{error}</p> : null}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+} *
+
+<div className="row">
+            <div className="col-sm-3">
+                <div className="input-group my-4 mx-4">
+                    <input type={passwordType} onChange={handlePasswordChange} value={passwordInput} name="password" class="form-control" placeholder="Password" />
+                      <div className="input-group-btn">
+                        <button className="btn btn-outline-primary" onClick={togglePassword}>
+                        { passwordType==="password"? <i className="bi bi-eye-slash"></i> :<i className="bi bi-eye"></i> }
+                        </button>
+                      </div>
+                </div>
+                
+            </div>
+      </div>
